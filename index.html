@@ -18,21 +18,14 @@
     <i id="iconSun" class="fa-solid fa-sun"></i>
 </button>
 
+<button class="speaker-toggle-btn" onclick="toggleSpeaker()" id="speakerToggleBtn" title="Toggle Hindi audio">
+    <i id="iconSpeaker" class="fa-solid fa-volume-high"></i>
+    <i id="iconMuted" class="fa-solid fa-volume-xmark"></i>
+</button>
+
 <div class="app-container" id="setupContainer">
 
     <div class="setup-hero">
-        <div class="setup-logo">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="56" height="56" rx="16" fill="url(#logoGrad)"/>
-                <path d="M18 28h6l4-10 4 20 4-14 3 4h3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <defs>
-                    <linearGradient id="logoGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-                        <stop offset="0%" stop-color="#6366f1"/>
-                        <stop offset="100%" stop-color="#8b5cf6"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
         <h1 class="setup-title">Translation Quiz</h1>
     </div>
 
@@ -280,7 +273,7 @@
     }
 
     function speakHindi(text) {
-        if (!window.speechSynthesis) return;
+        if (!window.speechSynthesis || !isSpeakerEnabled) return;
         window.speechSynthesis.cancel();
 
         function doSpeak() {
@@ -405,6 +398,36 @@
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
     }
 
+    // Speaker toggle for Hindi audio
+    let isSpeakerEnabled = true;
+    
+    function toggleSpeaker() {
+        isSpeakerEnabled = !isSpeakerEnabled;
+        const speakerBtn = document.getElementById('speakerToggleBtn');
+        const iconSpeaker = document.getElementById('iconSpeaker');
+        const iconMuted = document.getElementById('iconMuted');
+        
+        if (isSpeakerEnabled) {
+            speakerBtn.classList.remove('muted');
+            iconSpeaker.style.display = 'block';
+            iconMuted.style.display = 'none';
+            // If unmuted during quiz, speak current question
+            if (quizContainer.style.display === 'block' && activeQuestions[currentIndex]) {
+                speakHindi(activeQuestions[currentIndex].hindi);
+            }
+        } else {
+            speakerBtn.classList.add('muted');
+            iconSpeaker.style.display = 'none';
+            iconMuted.style.display = 'block';
+            // Stop any currently playing audio immediately
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+        }
+        
+        localStorage.setItem('speakerEnabled', isSpeakerEnabled);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
@@ -412,6 +435,16 @@
             document.getElementById('iconMoon').style.display = 'none';
             document.getElementById('iconSun').style.display  = 'block';
         }
+        
+        // Load speaker preference
+        const savedSpeaker = localStorage.getItem('speakerEnabled');
+        if (savedSpeaker === 'false') {
+            isSpeakerEnabled = false;
+            document.getElementById('speakerToggleBtn').classList.add('muted');
+            document.getElementById('iconSpeaker').style.display = 'none';
+            document.getElementById('iconMuted').style.display = 'block';
+        }
+        
         detectJsonFiles();
         initSpeechRecognition();
     });
@@ -480,11 +513,6 @@
             const chip = document.getElementById(`chip-${index}`);
             if (chip && chip.classList.contains('selected')) selectedCategories.push(cat);
         });
-    }
-
-    function speakCurrentHindi() {
-        const currentData = activeQuestions[currentIndex];
-        if (currentData) speakHindi(currentData.hindi);
     }
 
     function toggleChip(index) {
@@ -819,9 +847,8 @@
             }
         }
         if (event.key === 'ArrowUp') {
-            if (checkBtn.style.display === "block" || nextBtn.style.display === "block") {
-                speakCurrentHindi();
-            }
+            event.preventDefault();
+            toggleSpeaker();
         }
     });
 </script>
