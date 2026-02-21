@@ -196,13 +196,25 @@ function speakEnglish(text) {
     else { window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.onvoiceschanged = null; doSpeak(); }; }
 }
 
+// Common JSON files to auto-detect
 const jsonFilesToCheck = [
     'tense.json',
     'tenses.json',
+    'practice.json',
     'upsc.json',
     'vocabulary.json',
     'grammar.json',
-    'verbs.json'
+    'verbs.json',
+    'quiz.json',
+    'questions.json',
+    'test.json',
+    'exam.json',
+    'hindi.json',
+    'english.json',
+    'translation.json',
+    'words.json',
+    'phrases.json',
+    'sentences.json'
 ];
 
 const setupContainer = document.getElementById("setupContainer");
@@ -313,6 +325,7 @@ async function detectJsonFiles() {
     fileSelect.innerHTML = '<option value="">Loading files...</option>';
     availableFiles = [];
     
+    // Check predefined files
     for (const filename of jsonFilesToCheck) {
         try {
             const response = await fetch(filename, { method: 'HEAD' });
@@ -324,12 +337,50 @@ async function detectJsonFiles() {
         fileSelect.innerHTML = availableFiles.map(file => {
             const displayName = file.replace('.json', '').replace(/[-_]/g, ' ');
             const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
-            return `<option value="${file}">${capitalizedName} (${file})</option>`;
+            return `<option value="${file}">${capitalizedName}</option>`;
         }).join('');
+        // Add custom file option
+        fileSelect.innerHTML += '<option value="__custom__">📁 Load Custom File...</option>';
         loadCategories();
     } else {
         fileSelect.innerHTML = '<option value="">No JSON files found</option>';
-        alert('No JSON files found. Please add JSON files like tense.json.');
+        fileSelect.innerHTML += '<option value="__custom__">📁 Load Custom File...</option>';
+    }
+}
+
+async function loadCustomFile() {
+    const customFileName = prompt('Enter the JSON filename (e.g., myfile.json):');
+    if (!customFileName) return;
+    
+    // Ensure .json extension
+    const fileName = customFileName.endsWith('.json') ? customFileName : customFileName + '.json';
+    
+    try {
+        const response = await fetch(fileName, { method: 'HEAD' });
+        if (response.ok) {
+            // Add to available files if not already there
+            if (!availableFiles.includes(fileName)) {
+                availableFiles.push(fileName);
+                // Rebuild dropdown
+                const fileSelect = document.getElementById("fileSelect");
+                fileSelect.innerHTML = availableFiles.map(file => {
+                    const displayName = file.replace('.json', '').replace(/[-_]/g, ' ');
+                    const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+                    return `<option value="${file}">${capitalizedName}</option>`;
+                }).join('');
+                fileSelect.innerHTML += '<option value="__custom__">📁 Load Custom File...</option>';
+                // Select the new file
+                fileSelect.value = fileName;
+                loadCategories();
+            } else {
+                fileSelect.value = fileName;
+                loadCategories();
+            }
+        } else {
+            alert(`File "${fileName}" not found. Make sure it's in the same folder as index.html`);
+        }
+    } catch (error) {
+        alert(`Error loading "${fileName}". Make sure:\n1. File exists in the root folder\n2. You're using Live Server (not opening HTML directly)`);
     }
 }
 
@@ -337,6 +388,12 @@ async function loadCategories() {
     const selectedFile = document.getElementById("fileSelect").value;
     const categorySection = document.getElementById("categorySection");
     const categoryCheckboxes = document.getElementById("categoryCheckboxes");
+    
+    // Handle custom file option
+    if (selectedFile === '__custom__') {
+        loadCustomFile();
+        return;
+    }
     
     if (!selectedFile) { categorySection.style.display = "none"; return; }
     

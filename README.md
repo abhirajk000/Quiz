@@ -57,7 +57,7 @@ Create JSON files with the following structure:
   {
     "hindi": "वह किताब पढ़ रही है।",
     "english": "She is reading a book",
-]    "categories": "Present Continuous"
+    "categories": "Present Continuous"
   }
 ]
 ```
