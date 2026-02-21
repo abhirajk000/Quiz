@@ -7,40 +7,88 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Tense Translation Master</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
-    <span id="themeIcon">🌙</span>
-</div>
+<button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn" title="Toggle theme">
+    <i id="iconMoon" class="fa-solid fa-moon"></i>
+    <i id="iconSun" class="fa-solid fa-sun"></i>
+</button>
 
 <div class="app-container" id="setupContainer">
-    <div class="logo">🎯</div>
-    <h2>Quiz Setup</h2>
-    
-    <span class="setup-label">Your Name:</span>
-    <input type="text" id="userNameInput" placeholder="e.g. Abhiraj" autocomplete="off">
-    
-    <span class="setup-label">Choose Topic:</span>
-    <select id="fileSelect" onchange="loadCategories()">
-        <option value="">Loading...</option>
-    </select>
-    
-    <div id="categorySection" style="display: none;">
-        <span class="setup-label">Select Categories (optional):</span>
-        <div id="categoryCheckboxes" class="category-checkboxes"></div>
-        <button type="button" id="selectAllBtn" class="category-btn" onclick="toggleAllCategories()">Select All</button>
+
+    <div class="setup-hero">
+        <div class="setup-logo">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="56" height="56" rx="16" fill="url(#logoGrad)"/>
+                <path d="M18 28h6l4-10 4 20 4-14 3 4h3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                    <linearGradient id="logoGrad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#6366f1"/>
+                        <stop offset="100%" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <h1 class="setup-title">Translation Quiz</h1>
     </div>
-    
-    <span class="setup-label">Number of Questions:</span>
-    <input type="number" id="questionCountInput" value="30" min="5" max="500">
-    
-    <span class="setup-label">Time per Question (seconds):</span>
-    <input type="number" id="timerInput" value="60" min="5" max="300">
-    
-    <button id="startBtn" onclick="initializeQuiz()">Start Practice</button>
+
+    <!-- Questions + Timer: each on its own single line -->
+       <div class="setup-field full-width">
+        <div class="inline-label-row">
+            <label class="field-label">Questions : </label>
+            <div class="pill-group" id="qCountPills">
+                <button class="pill" onclick="setPill(this,'questionCountInput','qCountPills',20)">20</button>
+                <button class="pill active" onclick="setPill(this,'questionCountInput','qCountPills',30)">30</button>
+                <button class="pill" onclick="setPill(this,'questionCountInput','qCountPills',40)">40</button>
+                <button class="pill" onclick="setPill(this,'questionCountInput','qCountPills',60)">60</button>
+
+            </div>
+            <input type="number" id="questionCountInput" value="30" min="5" max="500">
+        </div>
+    </div>
+    <div class="setup-field full-width timer-field">
+        <div class="inline-label-row">
+            <label class="field-label">Timer :</label>
+            <div class="pill-group" id="timerPills">
+                <button class="pill" onclick="setPill(this,'timerInput','timerPills',30)">30s</button>
+                <button class="pill" onclick="setPill(this,'timerInput','timerPills',45)">45s</button>
+                <button class="pill active" onclick="setPill(this,'timerInput','timerPills',60)">60s</button>
+                <button class="pill active" onclick="setPill(this,'timerInput','timerPills',80)">80s</button>
+
+            </div>
+            <input type="number" id="timerInput" value="60" min="5" max="300">
+        </div>
+    </div>
+  
+
+    <!-- Topic -->
+    <div class="setup-field full-width">
+        <label class="field-label">Choose Topic</label>
+        <select id="fileSelect" onchange="loadCategories()" class="setup-select">
+            <option value="">Loading...</option>
+        </select>
+    </div>
+
+    <!-- Categories -->
+    <div id="categorySection" class="setup-field full-width">
+        <div class="cat-header">
+            <label class="field-labell">Categories</label>
+            <button type="button" id="selectAllBtn" class="cat-toggle-btn" onclick="toggleAllCategories()">
+                <span id="selectAllIcon">☑</span> All
+            </button>
+        </div>
+        <div id="categoryCheckboxes" class="category-checkboxes-new"></div>
+    </div>
+
+    <button id="startBtn" onclick="initializeQuiz()" class="start-btn">
+        <span>Start Practice</span>
+        <span class="btn-arrow">→</span>
+    </button>
+
 </div>
 
 <div class="app-container" id="quizContainer">
@@ -64,9 +112,19 @@
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
     <div id="progress-text">Question 1 / 30</div>
     
-    <div id="question">Loading...</div>
+    <div id="question" onclick="speakCurrentHindi()" title="🔊 Click to replay Hindi">Loading...</div>
     <div id="hintText" class="hint-text"></div>
-    <input type="text" id="userAnswer" placeholder="Type your English translation..." autocomplete="off">
+
+    <!-- ===== INPUT + MIC BUTTON ===== -->
+    <div class="input-wrapper">
+        <input type="text" id="userAnswer" placeholder="Type OR speak your English translation..." autocomplete="off">
+        <button class="mic-btn" id="micBtn" onclick="toggleSpeech()" title="Press M to speak">
+            <i id="micIcon" class="fa-solid fa-microphone"></i>
+            <i id="micStopIcon" class="fa-solid fa-stop"></i>
+        </button>
+    </div>
+    <div class="speech-status" id="speechStatus"></div>
+    <!-- ============================== -->
     
     <div class="action-buttons">
         <button id="hintBtn" onclick="showCategoryHint()">💡 Show Category</button>
@@ -77,7 +135,7 @@
     <button id="nextBtn" onclick="nextQuestion()">Next Question (Space)</button>
     
     <div id="reviewSection">
-        <h3 style="margin-top: 0;">Your Mistakes:</h3>
+        <h3 class="review-title">Your Mistakes:</h3>
         <div id="reviewList"></div>
     </div>
     
@@ -92,7 +150,7 @@
     let currentIndex = 0;
     let timerInterval;
     let customTimeLimit = 60; 
-    let playerName = "Student";
+    let playerName = "Quiz";
     let currentScore = 0;
     let currentStreak = 0;
     let wrongAnswers = [];
@@ -101,7 +159,191 @@
     let selectedCategories = [];
     let availableFiles = [];
 
-    // List of JSON files to check (add more files here as needed)
+    // ===== SPEECH RECOGNITION SETUP =====
+    let recognition = null;
+    let isListening = false;
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    function initSpeechRecognition() {
+        if (!SpeechRecognition) {
+            const micBtn = document.getElementById('micBtn');
+            if (micBtn) {
+                micBtn.disabled = true;
+                micBtn.title = 'Speech recognition not supported in this browser';
+                micBtn.insertAdjacentHTML('afterend', '<div class="mic-not-supported">⚠️ Use Chrome for voice input</div>');
+            }
+            return;
+        }
+
+        recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';       // Detect English speech
+        recognition.continuous = false;    // Stop after one sentence
+        recognition.interimResults = true; // Show real-time results
+
+        recognition.onstart = () => {
+            isListening = true;
+            const micBtn = document.getElementById('micBtn');
+            const status = document.getElementById('speechStatus');
+            micBtn.classList.add('listening');
+            micBtn.title = 'Click to stop';
+            const micIcon  = document.getElementById('micIcon');
+            const stopIcon = document.getElementById('micStopIcon');
+            if (micIcon)  micIcon.style.display  = 'none';
+            if (stopIcon) stopIcon.style.display = 'block';
+            status.textContent = '🎙️ Listening… speak your translation';
+            status.className = 'speech-status visible';
+        };
+
+        recognition.onresult = (event) => {
+            const input = document.getElementById('userAnswer');
+            const status = document.getElementById('speechStatus');
+            let interimText = '';
+            let finalText = '';
+
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const transcript = event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    finalText += transcript;
+                } else {
+                    interimText += transcript;
+                }
+            }
+
+            // Show live preview in input
+            if (finalText) {
+                input.value = finalText.trim();
+                status.textContent = '✅ Got it! Press Check or speak again.';
+            } else if (interimText) {
+                input.value = interimText;
+                status.textContent = '🎙️ Hearing: ' + interimText;
+            }
+        };
+
+        recognition.onerror = (event) => {
+            const status = document.getElementById('speechStatus');
+            let msg = '⚠️ Error: ';
+            if (event.error === 'no-speech') msg += 'No speech detected. Try again.';
+            else if (event.error === 'not-allowed') msg += 'Microphone blocked. Allow mic access.';
+            else if (event.error === 'network') msg += 'Network error. Check connection.';
+            else msg += event.error;
+            status.textContent = msg;
+            status.className = 'speech-status visible error';
+            resetMicButton();
+        };
+
+        recognition.onend = () => {
+            resetMicButton();
+            // Just show a ready message — user submits manually with Enter or Check button
+            const input = document.getElementById('userAnswer');
+            const status = document.getElementById('speechStatus');
+            if (input.value.trim()) {
+                status.textContent = '✅ Got it! Press Enter or Check Answer to submit.';
+                status.className = 'speech-status visible';
+            }
+        };
+    }
+
+    function toggleSpeech() {
+        if (!recognition) return;
+        const input = document.getElementById('userAnswer');
+
+        if (isListening) {
+            recognition.stop();
+        } else {
+            if (input.disabled) return; // Don't allow during review
+            input.value = '';
+            try {
+                recognition.start();
+            } catch(e) {
+                console.warn('Recognition already started', e);
+            }
+        }
+    }
+
+    function resetMicButton() {
+        isListening = false;
+        const micBtn = document.getElementById('micBtn');
+        if (micBtn) {
+            micBtn.classList.remove('listening');
+            micBtn.title = 'Press M to speak';
+            const micIcon  = document.getElementById('micIcon');
+            const stopIcon = document.getElementById('micStopIcon');
+            if (micIcon)  micIcon.style.display  = 'block';
+            if (stopIcon) stopIcon.style.display = 'none';
+        }
+    }
+
+    function stopSpeechIfListening() {
+        if (isListening && recognition) {
+            recognition.stop();
+        }
+    }
+
+    function speakHindi(text) {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+
+        function doSpeak() {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'hi-IN';
+            utterance.rate = 0.85;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            const voices = window.speechSynthesis.getVoices();
+            const hindiVoice = voices.find(v => v.lang === 'hi-IN' || v.lang.startsWith('hi'));
+            if (hindiVoice) utterance.voice = hindiVoice;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Chrome loads voices async on first call — wait if not ready
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length > 0) {
+            doSpeak();
+        } else {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.onvoiceschanged = null;
+                doSpeak();
+            };
+        }
+    }
+    // =================================================
+
+    function speakEnglish(text) {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+
+        function doSpeak() {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-IN';
+            utterance.rate = 0.82;
+            utterance.pitch = 1.05;
+            utterance.volume = 1;
+            const voices = window.speechSynthesis.getVoices();
+            // Priority: Indian English > Google UK > Google US > any English
+            const preferred = [
+                v => v.name === 'Google हिन्दी',           // Hindi Google voice (Indian accent)
+                v => v.name.includes('Ravi'),               // Microsoft Ravi (Indian English)
+                v => v.name.includes('Heera'),              // Microsoft Heera (Indian English female)
+                v => v.lang === 'en-IN',                    // Any Indian English voice
+                v => v.name === 'Google UK English Female', // Google UK Female fallback
+                v => v.name === 'Google US English',        // Google US fallback
+                v => v.name.includes('Microsoft') && v.lang.startsWith('en'),
+                v => v.lang.startsWith('en'),
+            ];
+            let picked = null;
+            for (const matcher of preferred) {
+                picked = voices.find(matcher);
+                if (picked) break;
+            }
+            if (picked) utterance.voice = picked;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length > 0) doSpeak();
+        else { window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.onvoiceschanged = null; doSpeak(); }; }
+    }
+
     const jsonFilesToCheck = [
         'tense.json',
         'tenses.json',
@@ -135,7 +377,6 @@
     const mainTitle = document.getElementById("mainTitle");
     const hintBtn = document.getElementById("hintBtn");
 
-    // Shuffle array function
     function shuffleArray(array) {
         const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -145,140 +386,134 @@
         return shuffled;
     }
 
-    // Theme toggle
+    // ===== PILL SELECTOR =====
+    function setPill(btn, inputId, groupId, val) {
+        document.getElementById(inputId).value = val;
+        document.querySelectorAll(`#${groupId} .pill`).forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+    }
+    function clearPills(groupId) {
+        document.querySelectorAll(`#${groupId} .pill`).forEach(p => p.classList.remove('active'));
+    }
+
+
     function toggleTheme() {
         document.body.classList.toggle('light-theme');
-        const themeIcon = document.getElementById('themeIcon');
         const isLight = document.body.classList.contains('light-theme');
-        themeIcon.innerText = isLight ? '☀️' : '🌙';
+        document.getElementById('iconMoon').style.display = isLight ? 'none' : 'block';
+        document.getElementById('iconSun').style.display  = isLight ? 'block' : 'none';
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
     }
 
-    // Load saved theme and detect JSON files
     window.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
-            document.getElementById('themeIcon').innerText = '☀️';
+            document.getElementById('iconMoon').style.display = 'none';
+            document.getElementById('iconSun').style.display  = 'block';
         }
-        // Detect available JSON files
         detectJsonFiles();
+        initSpeechRecognition();
     });
 
-    // Detect available JSON files in the root directory
     async function detectJsonFiles() {
         const fileSelect = document.getElementById("fileSelect");
         fileSelect.innerHTML = '<option value="">Loading files...</option>';
-        
         availableFiles = [];
         
-        // Check each file
         for (const filename of jsonFilesToCheck) {
             try {
                 const response = await fetch(filename, { method: 'HEAD' });
-                if (response.ok) {
-                    availableFiles.push(filename);
-                }
-            } catch (error) {
-                // File doesn't exist, skip it
-            }
+                if (response.ok) availableFiles.push(filename);
+            } catch (error) {}
         }
         
-        // Populate dropdown
         if (availableFiles.length > 0) {
             fileSelect.innerHTML = availableFiles.map(file => {
                 const displayName = file.replace('.json', '').replace(/[-_]/g, ' ');
                 const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
                 return `<option value="${file}">${capitalizedName} (${file})</option>`;
             }).join('');
-            
-            // Load categories for the first file
             loadCategories();
         } else {
             fileSelect.innerHTML = '<option value="">No JSON files found</option>';
-            alert('No JSON files found in the root directory. Please add JSON files like tense.json, upsc.json, etc.');
+            alert('No JSON files found. Please add JSON files like tense.json.');
         }
     }
 
-    // Load categories from selected file
     async function loadCategories() {
         const selectedFile = document.getElementById("fileSelect").value;
         const categorySection = document.getElementById("categorySection");
         const categoryCheckboxes = document.getElementById("categoryCheckboxes");
         
-        if (!selectedFile) {
-            categorySection.style.display = "none";
-            return;
-        }
+        if (!selectedFile) { categorySection.style.display = "none"; return; }
         
         try {
             const response = await fetch(selectedFile);
             if (!response.ok) throw new Error("File not found");
-            
             const data = await response.json();
             
-            // Extract unique categories
             const categoriesSet = new Set();
-            data.forEach(item => {
-                if (item.categories) {
-                    categoriesSet.add(item.categories);
-                }
-            });
-            
+            data.forEach(item => { if (item.categories) categoriesSet.add(item.categories); });
             availableCategories = Array.from(categoriesSet).sort();
             
             if (availableCategories.length > 0) {
                 categorySection.style.display = "block";
                 categoryCheckboxes.innerHTML = availableCategories.map((cat, index) => `
-                    <div class="category-item">
-                        <input type="checkbox" id="cat-${index}" value="${cat}" checked onchange="updateSelectedCategories()">
-                        <label for="cat-${index}">${cat}</label>
+                    <div class="cat-chip selected" id="chip-${index}" onclick="toggleChip(${index})">
+                        <span class="chip-dot"></span>
+                        <span>${cat}</span>
                     </div>
                 `).join('');
-                
-                // Initialize all as selected
                 selectedCategories = [...availableCategories];
             } else {
                 categorySection.style.display = "none";
             }
         } catch (error) {
-            console.error("Error loading categories:", error);
             categorySection.style.display = "none";
         }
     }
 
-    // Update selected categories array
     function updateSelectedCategories() {
         selectedCategories = [];
         availableCategories.forEach((cat, index) => {
-            const checkbox = document.getElementById(`cat-${index}`);
-            if (checkbox && checkbox.checked) {
-                selectedCategories.push(cat);
-            }
+            const chip = document.getElementById(`chip-${index}`);
+            if (chip && chip.classList.contains('selected')) selectedCategories.push(cat);
         });
-        console.log('Selected categories:', selectedCategories);
     }
 
-    // Toggle all categories
+    function speakCurrentHindi() {
+        const currentData = activeQuestions[currentIndex];
+        if (currentData) speakHindi(currentData.hindi);
+    }
+
+    function toggleChip(index) {
+        const chip = document.getElementById(`chip-${index}`);
+        if (!chip) return;
+        chip.classList.toggle('selected');
+        updateSelectedCategories();
+        syncAllBtn();
+    }
+
+    function syncAllBtn() {
+        const allSelected = selectedCategories.length === availableCategories.length;
+        const btn = document.getElementById('selectAllBtn');
+        if (btn) btn.innerHTML = `<span id="selectAllIcon">${allSelected ? '☑' : '☐'}</span> All`;
+    }
+
     function toggleAllCategories() {
         const allChecked = selectedCategories.length === availableCategories.length;
         availableCategories.forEach((cat, index) => {
-            const checkbox = document.getElementById(`cat-${index}`);
-            if (checkbox) {
-                checkbox.checked = !allChecked;
-            }
+            const chip = document.getElementById(`chip-${index}`);
+            if (chip) chip.classList.toggle('selected', !allChecked);
         });
         updateSelectedCategories();
-        
-        const btn = document.getElementById('selectAllBtn');
-        btn.innerText = allChecked ? 'Select All' : 'Deselect All';
+        syncAllBtn();
     }
 
-    // Show category hint
     function showCategoryHint() {
         const currentData = activeQuestions[currentIndex];
         if (currentData.categories) {
-            // Toggle the button to show category
             hintBtn.innerHTML = `📚 ${currentData.categories}`;
             hintBtn.disabled = true;
             hintBtn.style.opacity = '1';
@@ -286,15 +521,11 @@
         }
     }
 
-    // Normalize text for comparison
     function normalizeText(text) {
         return text.toLowerCase().replace(/[.,?!'"]/g, '').replace(/\b(a|an|the)\b/g, '').replace(/\s+/g, ' ').trim();
     }
 
     async function initializeQuiz() {
-        const nameVal = document.getElementById("userNameInput").value.trim();
-        if (nameVal) playerName = nameVal;
-        
         const timeVal = parseInt(document.getElementById("timerInput").value);
         if (timeVal && timeVal >= 5) customTimeLimit = timeVal;
         
@@ -302,35 +533,26 @@
         if (questionCount && questionCount >= 5) totalQuestions = questionCount;
         
         const selectedFile = document.getElementById("fileSelect").value;
-        
-        // Update selected categories before starting
         updateSelectedCategories();
         
         try {
-            // Fetch the JSON file
             const response = await fetch(selectedFile);
             if (!response.ok) throw new Error("File not found");
-            
             const data = await response.json();
             
             if (data && data.length > 0) {
                 allQuestions = data;
-                
-                // Filter by selected categories if any are selected
                 let filteredQuestions = allQuestions;
+                
                 if (selectedCategories.length > 0 && selectedCategories.length < availableCategories.length) {
-                    filteredQuestions = allQuestions.filter(q => 
-                        q.categories && selectedCategories.includes(q.categories)
-                    );
-                    console.log(`Filtered to ${filteredQuestions.length} questions from selected categories`);
+                    filteredQuestions = allQuestions.filter(q => q.categories && selectedCategories.includes(q.categories));
                 }
                 
                 if (filteredQuestions.length === 0) {
-                    alert("No questions found for the selected categories. Please select at least one category.");
+                    alert("No questions found for selected categories.");
                     return;
                 }
                 
-                // Shuffle and select questions
                 const shuffled = shuffleArray(filteredQuestions);
                 activeQuestions = shuffled.slice(0, Math.min(totalQuestions, shuffled.length));
                 
@@ -343,58 +565,53 @@
                 alert(`No questions found in ${selectedFile}.`);
             }
         } catch (error) {
-            alert(`Error loading ${selectedFile}. \n\nIMPORTANT: If you are opening this HTML file directly from your computer, browsers will block fetching JSON files. Please open this folder using VS Code and click "Go Live" (Live Server extension).`);
+            alert(`Error loading ${selectedFile}. \n\nIMPORTANT: Open this folder using VS Code with Live Server extension.`);
         }
     }
 
     function updateTimerUI(seconds, isReview = false) {
         timerDisplayEl.querySelector('span:last-child').innerText = `${seconds}s`;
-        if (!isReview && seconds <= 20) {
-            timerDisplayEl.classList.add('warning');
-        } else {
-            timerDisplayEl.classList.remove('warning');
-        }
+        if (!isReview && seconds <= 20) timerDisplayEl.classList.add('warning');
+        else timerDisplayEl.classList.remove('warning');
     }
 
     function startInputTimer() {
         clearInterval(timerInterval);
-        let timeLeft = customTimeLimit; 
+        let timeLeft = customTimeLimit;
         updateTimerUI(timeLeft, false);
         timerInterval = setInterval(() => {
             timeLeft--;
             updateTimerUI(timeLeft, false);
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                checkAnswer();
-            }
+            if (timeLeft <= 0) { clearInterval(timerInterval); checkAnswer(); }
         }, 1000);
     }
 
     function startReviewTimer() {
         clearInterval(timerInterval);
-        let timeLeft = 30; 
+        let timeLeft = 30;
         updateTimerUI(timeLeft, true);
         timerInterval = setInterval(() => {
             timeLeft--;
             updateTimerUI(timeLeft, true);
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                nextQuestion();
-            }
+            if (timeLeft <= 0) { clearInterval(timerInterval); nextQuestion(); }
         }, 1000);
     }
 
     function loadQuestion() {
-        questionEl.style.animation = 'none';
-        questionEl.offsetHeight; 
-        questionEl.style.animation = null; 
+        stopSpeechIfListening(); // Stop mic if active
+        window.speechSynthesis && window.speechSynthesis.cancel(); // Stop any TTS
 
-        // Load data from the JSON structure
+        questionEl.style.animation = 'none';
+        questionEl.offsetHeight;
+        questionEl.style.animation = null;
+
         let currentData = activeQuestions[currentIndex];
         questionEl.innerText = currentData.hindi;
         hintTextEl.innerText = currentData.hints ? `💡 Hint: ${currentData.hints}` : "";
+
+        // Speak the Hindi question aloud
+        speakHindi(currentData.hindi);
         
-        // Reset hint button
         hintBtn.innerHTML = '💡 Show Category';
         hintBtn.disabled = false;
         hintBtn.style.opacity = '1';
@@ -405,6 +622,13 @@
         
         feedbackEl.style.display = "none";
         feedbackEl.className = "";
+
+        // Show mic button and reset status
+        const micBtn = document.getElementById('micBtn');
+        const speechStatus = document.getElementById('speechStatus');
+        document.querySelector('.input-wrapper').style.display = 'flex';
+        if (micBtn) { micBtn.style.display = 'flex'; micBtn.disabled = false; }
+        if (speechStatus) { speechStatus.textContent = ''; speechStatus.className = 'speech-status'; }
         
         checkBtn.style.display = "block";
         nextBtn.style.display = "none";
@@ -419,8 +643,13 @@
     }
 
     function checkAnswer() {
+        stopSpeechIfListening(); // Stop mic when checking
         clearInterval(timerInterval);
         inputEl.disabled = true;
+
+        // Disable mic during review
+        const micBtn = document.getElementById('micBtn');
+        if (micBtn) micBtn.disabled = true;
 
         const rawUserAnswer = inputEl.value;
         const rawCorrectAnswer = activeQuestions[currentIndex].english;
@@ -428,68 +657,69 @@
         
         const cleanUserAnswer = normalizeText(rawUserAnswer);
         const cleanCorrectAnswer = normalizeText(rawCorrectAnswer);
-
         let isCorrect = (cleanUserAnswer === cleanCorrectAnswer);
 
         feedbackEl.style.display = "block";
         
-        if(isCorrect) {
+        if (isCorrect) {
             currentScore++;
             currentStreak++;
             scoreDisplayEl.querySelector('span:last-child').innerText = `Score: ${currentScore}`;
             feedbackEl.className = "correct-box";
             feedbackEl.innerHTML = `
                 <em>${rawUserAnswer}</em><br>
-                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed currentColor; font-size: 0.9em;">
+                <div class="feedback-category">
                     📚 Category: <strong>${category}</strong>
                 </div>
             `;
-            
-            if(currentStreak > 1) {
+            if (currentStreak > 1) {
                 streakDisplayEl.style.display = "flex";
                 streakDisplayEl.querySelector('span:last-child').innerText = `Streak: ${currentStreak}`;
             }
         } else {
             currentStreak = 0;
             streakDisplayEl.style.display = "none";
-            
             wrongAnswers.push({ 
                 hindi: activeQuestions[currentIndex].hindi, 
                 english: rawCorrectAnswer,
                 hints: activeQuestions[currentIndex].hints,
                 categories: category
             });
-
             feedbackEl.className = "wrong-box";
             feedbackEl.innerHTML = `
-                <em style="color:var(--text-secondary);">${rawUserAnswer || "(Blank)"}</em>
+                <em class="user-wrong-answer">${rawUserAnswer || "(Blank)"}</em>
                 <div class="actual-answer">${rawCorrectAnswer}</div>
-                <div style="margin-top: 10px; color:var(--text-primary); padding-top: 10px; border-top: 1px dashed currentColor; font-size: 0.9em;">
+                <div class="feedback-category">
                     ${category}
                 </div>
             `;
+
         }
         
         checkBtn.style.display = "none";
         nextBtn.style.display = "block";
         hintBtn.style.display = "none";
+
+        // Hide input row + mic + speech status when answer is revealed
+        document.querySelector('.input-wrapper').style.display = 'none';
+        const speechStatus = document.getElementById('speechStatus');
+        if (speechStatus) speechStatus.className = 'speech-status';
+
         startReviewTimer();
     }
 
     function nextQuestion() {
         clearInterval(timerInterval);
         currentIndex++;
-        if (currentIndex < activeQuestions.length) {
-            loadQuestion();
-        } else {
-            showEndScreen();
-        }
+        if (currentIndex < activeQuestions.length) loadQuestion();
+        else showEndScreen();
     }
 
     function showEndScreen() {
+        stopSpeechIfListening();
         progressBarEl.style.width = "100%";
         mainTitle.innerText = "Quiz Complete! 🎉";
-        questionEl.innerText = `${playerName}, you scored ${currentScore} out of ${activeQuestions.length}!`;
+        questionEl.innerText = `You scored ${currentScore} out of ${activeQuestions.length}!`;
         
         hintTextEl.style.display = "none";
         timerDisplayEl.style.display = "none";
@@ -501,6 +731,12 @@
         streakDisplayEl.style.display = "none";
         progressTextEl.innerText = "All Done!";
         scoreDisplayEl.querySelector('span:last-child').innerText = `Final: ${currentScore}/${activeQuestions.length}`;
+
+        // Hide mic on end screen
+        const micBtn = document.getElementById('micBtn');
+        const speechStatus = document.getElementById('speechStatus');
+        if (micBtn) micBtn.style.display = 'none';
+        if (speechStatus) speechStatus.className = 'speech-status';
 
         if (wrongAnswers.length > 0) {
             reviewBtn.style.display = "inline-block";
@@ -515,14 +751,12 @@
     function showReviewScreen() {
         questionEl.style.display = "none";
         reviewBtn.style.display = "none";
-        
         reviewList.innerHTML = wrongAnswers.map(item => `
             <div class="review-item">
                 ${item.hindi} - <strong>${item.english}</strong>
-                ${item.categories ? `<br><small style="opacity: 0.8;">📚 ${item.categories}</small>` : ''}
+                ${item.categories ? `<br><small class="review-category">📚 ${item.categories}</small>` : ''}
             </div>
         `).join('');
-        
         reviewSection.style.display = "block";
         retryBtn.style.display = "inline-block";
         restartBtn.style.display = "inline-block";
@@ -534,8 +768,8 @@
         currentStreak = 0;
         wrongAnswers = [];
         
-        mainTitle.innerText = `${playerName}'s Quiz`;
-        questionEl.style.display = "block"; 
+        mainTitle.innerText = `Translation`;
+        questionEl.style.display = "block";
         hintTextEl.style.display = "block";
         timerDisplayEl.style.display = "inline-block";
         inputEl.style.display = "block";
@@ -544,26 +778,26 @@
         retryBtn.style.display = "none";
         restartBtn.style.display = "none";
         streakDisplayEl.style.display = "none";
+
+        // Reset mic
+        const micBtn = document.getElementById('micBtn');
+        if (micBtn) { micBtn.style.display = 'flex'; micBtn.disabled = false; }
+        resetMicButton();
     }
 
     function retryMistakes() {
-        // Map the wrong answers back into the active pool
-        activeQuestions = wrongAnswers.map(item => { 
-            return { 
-                hindi: item.hindi, 
-                english: item.english, 
-                hints: item.hints,
-                categories: item.categories
-            }; 
-        });
+        activeQuestions = wrongAnswers.map(item => ({ 
+            hindi: item.hindi, 
+            english: item.english, 
+            hints: item.hints,
+            categories: item.categories
+        }));
         resetGameState();
         mainTitle.innerText = "Retry Mistakes";
         loadQuestion();
     }
 
-    function returnToSetup() {
-        window.location.reload(); 
-    }
+    function returnToSetup() { window.location.reload(); }
 
     document.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
@@ -579,8 +813,17 @@
             event.preventDefault();
             nextQuestion();
         }
+        if (event.key === 'ArrowDown') {
+            if (!inputEl.disabled && checkBtn.style.display === "block") {
+                toggleSpeech();
+            }
+        }
+        if (event.key === 'ArrowUp') {
+            if (checkBtn.style.display === "block" || nextBtn.style.display === "block") {
+                speakCurrentHindi();
+            }
+        }
     });
-
 </script>
 
 </body>
