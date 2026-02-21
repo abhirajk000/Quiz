@@ -1323,9 +1323,19 @@ h1, h2, h3 {
     flex-shrink: 0;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     color: white;
-    box-shadow: 0 4px 14px rgba(99,102,241,0.4);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.mic-btn::before {
+    display: none !important;
+}
+
+.mic-btn:hover {
+    box-shadow: none !important;
+    filter: none !important;
 }
 
 .mic-btn:disabled { 
@@ -1336,7 +1346,12 @@ h1, h2, h3 {
 /* Listening state */
 .mic-btn.listening {
     background: linear-gradient(135deg, var(--danger), #f97316);
-    box-shadow: 0 4px 18px rgba(239,68,68,0.5);
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.mic-btn.listening::before {
+    display: none !important;
 }
 
 /* Speech status */
