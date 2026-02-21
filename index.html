@@ -438,7 +438,7 @@
             currentStreak++;
             scoreDisplayEl.querySelector('span:last-child').innerText = `Score: ${currentScore}`;
             feedbackEl.className = "correct-box";
-            feedbackEl.innerHTML = `✓ Correct!<br><em>${rawUserAnswer}</em>`;
+            feedbackEl.innerHTML = `<em>${rawUserAnswer}</em>`;
             
             if(currentStreak > 1) {
                 streakDisplayEl.style.display = "flex";
@@ -456,9 +456,8 @@
 
             feedbackEl.className = "wrong-box";
             feedbackEl.innerHTML = `
-                ✗ Wrong<br>
                 <em style="color:var(--text-secondary);">${rawUserAnswer || "(Blank)"}</em>
-                <div class="actual-answer">Correct: ${rawCorrectAnswer}</div>
+                <div class="actual-answer">${rawCorrectAnswer}</div>
             `;
         }
         
