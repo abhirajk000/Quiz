@@ -12,6 +12,12 @@ let availableCategories = [];
 let selectedCategories = [];
 let availableFiles = [];
 
+// ===== AUTO-SPEAK MODE =====
+let isAutoSpeakMode = false;
+let autoSubmitTimeout = null;   // 3-sec countdown after speech captured
+let autoNextTimeout = null;     // 10-sec countdown after answer shown
+let autoSubmitCountdownInterval = null; // For visual countdown
+
 // ===== SPEECH RECOGNITION SETUP =====
 let recognition = null;
 let isListening = false;
@@ -29,9 +35,9 @@ function initSpeechRecognition() {
     }
 
     recognition = new SpeechRecognition();
-    recognition.lang = 'en-US';       // Detect English speech
-    recognition.continuous = false;    // Stop after one sentence
-    recognition.interimResults = true; // Show real-time results
+    recognition.lang = 'en-US';
+    recognition.continuous = false;
+    recognition.interimResults = true;
 
     recognition.onstart = () => {
         isListening = true;
@@ -45,6 +51,16 @@ function initSpeechRecognition() {
         if (stopIcon) stopIcon.style.display = 'block';
         status.textContent = '🎙️ Listening… speak your translation';
         status.className = 'speech-status visible';
+
+        // Cancel any pending auto-submit when user starts speaking again
+        if (autoSubmitTimeout) {
+            clearTimeout(autoSubmitTimeout);
+            autoSubmitTimeout = null;
+        }
+        if (autoSubmitCountdownInterval) {
+            clearInterval(autoSubmitCountdownInterval);
+            autoSubmitCountdownInterval = null;
+        }
     };
 
     recognition.onresult = (event) => {
@@ -62,7 +78,6 @@ function initSpeechRecognition() {
             }
         }
 
-        // Show live preview in input
         if (finalText) {
             input.value = finalText.trim();
             status.textContent = '✅ Got it! Press Check or speak again.';
@@ -75,7 +90,17 @@ function initSpeechRecognition() {
     recognition.onerror = (event) => {
         const status = document.getElementById('speechStatus');
         let msg = '⚠️ Error: ';
-        if (event.error === 'no-speech') msg += 'No speech detected. Try again.';
+        if (event.error === 'no-speech') {
+            msg += 'No speech detected. Try again.';
+            // In auto-speak mode, retry mic after no-speech
+            if (isAutoSpeakMode && !inputEl.disabled && checkBtn.style.display === "block") {
+                setTimeout(() => {
+                    if (isAutoSpeakMode && !inputEl.disabled) {
+                        try { recognition.start(); } catch(e) {}
+                    }
+                }, 800);
+            }
+        }
         else if (event.error === 'not-allowed') msg += 'Microphone blocked. Allow mic access.';
         else if (event.error === 'network') msg += 'Network error. Check connection.';
         else msg += event.error;
@@ -86,24 +111,116 @@ function initSpeechRecognition() {
 
     recognition.onend = () => {
         resetMicButton();
-        // Just show a ready message — user submits manually with Enter or Check button
         const input = document.getElementById('userAnswer');
         const status = document.getElementById('speechStatus');
+
         if (input.value.trim()) {
-            status.textContent = '✅ Got it! Now Check Answer';
-            status.className = 'speech-status visible';
+            // We have text — in auto-speak mode, start 3-second countdown to auto-submit
+            if (isAutoSpeakMode && !inputEl.disabled && checkBtn.style.display === "block") {
+                startAutoSubmitCountdown(input.value.trim(), status);
+            } else {
+                status.textContent = '✅ Got it! Now Check Answer';
+                status.className = 'speech-status visible';
+            }
+        } else if (isAutoSpeakMode && !inputEl.disabled && checkBtn.style.display === "block") {
+            // No text yet — restart mic in auto-speak mode
+            setTimeout(() => {
+                if (isAutoSpeakMode && !inputEl.disabled) {
+                    try { recognition.start(); } catch(e) {}
+                }
+            }, 400);
         }
     };
+}
+
+// ===== AUTO-SUBMIT COUNTDOWN (3 seconds) =====
+function startAutoSubmitCountdown(capturedText, statusEl) {
+    // Cancel any existing countdown
+    if (autoSubmitTimeout) clearTimeout(autoSubmitTimeout);
+    if (autoSubmitCountdownInterval) clearInterval(autoSubmitCountdownInterval);
+
+    let secondsLeft = 3;
+    statusEl.textContent = `⏳ Auto-submitting in ${secondsLeft}s… speak again to cancel`;
+    statusEl.className = 'speech-status visible auto-countdown';
+
+    autoSubmitCountdownInterval = setInterval(() => {
+        secondsLeft--;
+        if (secondsLeft > 0) {
+            statusEl.textContent = `⏳ Auto-submitting in ${secondsLeft}s… speak again to cancel`;
+        } else {
+            clearInterval(autoSubmitCountdownInterval);
+            autoSubmitCountdownInterval = null;
+        }
+    }, 1000);
+
+    autoSubmitTimeout = setTimeout(() => {
+        autoSubmitTimeout = null;
+        if (autoSubmitCountdownInterval) {
+            clearInterval(autoSubmitCountdownInterval);
+            autoSubmitCountdownInterval = null;
+        }
+        // Only auto-submit if still in question phase (not already submitted)
+        if (!inputEl.disabled && checkBtn.style.display === "block") {
+            checkAnswer();
+        }
+    }, 3000);
+}
+
+// ===== AUTO-NEXT COUNTDOWN (10 seconds after answer shown) =====
+function startAutoNextCountdown() {
+    if (!isAutoSpeakMode) return;
+    if (autoNextTimeout) clearTimeout(autoNextTimeout);
+
+    let secondsLeft = 10;
+    // Update the next button to show countdown
+    nextBtn.textContent = `Next (${secondsLeft}s) →`;
+
+    const countdownInterval = setInterval(() => {
+        secondsLeft--;
+        if (secondsLeft > 0 && nextBtn.style.display === "block") {
+            nextBtn.textContent = `Next (${secondsLeft}s) →`;
+        } else {
+            clearInterval(countdownInterval);
+            if (secondsLeft <= 0) nextBtn.textContent = 'Next Question (Space)';
+        }
+    }, 1000);
+
+    autoNextTimeout = setTimeout(() => {
+        autoNextTimeout = null;
+        clearInterval(countdownInterval);
+        if (nextBtn.style.display === "block") {
+            nextBtn.textContent = 'Next Question (Space)';
+            nextQuestion();
+        }
+    }, 10000);
+}
+
+function cancelAutoNext() {
+    if (autoNextTimeout) {
+        clearTimeout(autoNextTimeout);
+        autoNextTimeout = null;
+        nextBtn.textContent = 'Next Question (Space)';
+    }
 }
 
 function toggleSpeech() {
     if (!recognition) return;
     const input = document.getElementById('userAnswer');
 
+    // Cancel auto-submit if user manually toggles mic
+    if (autoSubmitTimeout) {
+        clearTimeout(autoSubmitTimeout);
+        autoSubmitTimeout = null;
+    }
+    if (autoSubmitCountdownInterval) {
+        clearInterval(autoSubmitCountdownInterval);
+        autoSubmitCountdownInterval = null;
+    }
+
     if (isListening) {
         recognition.stop();
     } else {
-        if (input.disabled) return; // Don't allow during review
+        if (input.disabled) return;
         input.value = '';
         try {
             recognition.start();
@@ -130,6 +247,15 @@ function stopSpeechIfListening() {
     if (isListening && recognition) {
         recognition.stop();
     }
+    // Also cancel any pending auto-submit
+    if (autoSubmitTimeout) {
+        clearTimeout(autoSubmitTimeout);
+        autoSubmitTimeout = null;
+    }
+    if (autoSubmitCountdownInterval) {
+        clearInterval(autoSubmitCountdownInterval);
+        autoSubmitCountdownInterval = null;
+    }
 }
 
 function speakHindi(text) {
@@ -148,7 +274,6 @@ function speakHindi(text) {
         window.speechSynthesis.speak(utterance);
     }
 
-    // Chrome loads voices async on first call — wait if not ready
     const voices = window.speechSynthesis.getVoices();
     if (voices.length > 0) {
         doSpeak();
@@ -171,14 +296,13 @@ function speakEnglish(text) {
         utterance.pitch = 1.05;
         utterance.volume = 1;
         const voices = window.speechSynthesis.getVoices();
-        // Priority: Indian English > Google UK > Google US > any English
         const preferred = [
-            v => v.name === 'Google हिन्दी',           // Hindi Google voice (Indian accent)
-            v => v.name.includes('Ravi'),               // Microsoft Ravi (Indian English)
-            v => v.name.includes('Heera'),              // Microsoft Heera (Indian English female)
-            v => v.lang === 'en-IN',                    // Any Indian English voice
-            v => v.name === 'Google UK English Female', // Google UK Female fallback
-            v => v.name === 'Google US English',        // Google US fallback
+            v => v.name === 'Google हिन्दी',
+            v => v.name.includes('Ravi'),
+            v => v.name.includes('Heera'),
+            v => v.lang === 'en-IN',
+            v => v.name === 'Google UK English Female',
+            v => v.name === 'Google US English',
             v => v.name.includes('Microsoft') && v.lang.startsWith('en'),
             v => v.lang.startsWith('en'),
         ];
@@ -260,7 +384,6 @@ function clearPills(groupId) {
     document.querySelectorAll(`#${groupId} .pill`).forEach(p => p.classList.remove('active'));
 }
 
-
 function toggleTheme() {
     document.body.classList.toggle('light-theme');
     const isLight = document.body.classList.contains('light-theme');
@@ -282,7 +405,6 @@ function toggleSpeaker() {
         speakerBtn.classList.remove('muted');
         iconSpeaker.style.display = 'block';
         iconMuted.style.display = 'none';
-        // If unmuted during quiz, speak current question
         if (quizContainer.style.display === 'block' && activeQuestions[currentIndex]) {
             speakHindi(activeQuestions[currentIndex].hindi);
         }
@@ -290,7 +412,6 @@ function toggleSpeaker() {
         speakerBtn.classList.add('muted');
         iconSpeaker.style.display = 'none';
         iconMuted.style.display = 'block';
-        // Stop any currently playing audio immediately
         if (window.speechSynthesis) {
             window.speechSynthesis.cancel();
         }
@@ -298,6 +419,51 @@ function toggleSpeaker() {
     
     localStorage.setItem('speakerEnabled', isSpeakerEnabled);
 }
+
+// ===== AUTO-SPEAK MODE TOGGLE =====
+function toggleAutoSpeak() {
+    isAutoSpeakMode = !isAutoSpeakMode;
+    const autoSpeakBtn = document.getElementById('autoSpeakToggleBtn');
+    const iconAutoSpeak = document.getElementById('iconAutoSpeak');
+    const iconAutoSpeakOff = document.getElementById('iconAutoSpeakOff');
+    const autoSpeakLabel = document.getElementById('autoSpeakLabel');
+    
+    if (isAutoSpeakMode) {
+        autoSpeakBtn.classList.add('active');
+        autoSpeakBtn.title = 'ON';
+        iconAutoSpeakOff.style.display = 'none';
+        iconAutoSpeak.style.display = 'block';
+        
+
+        if (quizContainer.style.display === 'block' && !inputEl.disabled && checkBtn.style.display === "block") {
+            if (!isListening && recognition) {
+                setTimeout(() => {
+                    try { recognition.start(); } catch(e) {}
+                }, 500);
+            }
+        }
+    } else {
+        autoSpeakBtn.classList.remove('active');
+        autoSpeakBtn.title = 'OFF';
+        iconAutoSpeakOff.style.display = 'block';
+        iconAutoSpeak.style.display = 'none';
+        if (autoSpeakLabel) autoSpeakLabel.textContent = '';
+
+
+        // Cancel all pending auto-actions
+        if (autoSubmitTimeout) { clearTimeout(autoSubmitTimeout); autoSubmitTimeout = null; }
+        if (autoSubmitCountdownInterval) { clearInterval(autoSubmitCountdownInterval); autoSubmitCountdownInterval = null; }
+        cancelAutoNext();
+
+        // Update status
+        const status = document.getElementById('speechStatus');
+        if (status) { status.textContent = ''; status.className = 'speech-status'; }
+    }
+    
+    localStorage.setItem('autoSpeakMode', isAutoSpeakMode);
+}
+
+
 
 window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
@@ -316,6 +482,19 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('iconMuted').style.display = 'block';
     }
     
+    // Load auto-speak preference
+    const savedAutoSpeak = localStorage.getItem('autoSpeakMode');
+    if (savedAutoSpeak === 'true') {
+        isAutoSpeakMode = true;
+        const autoSpeakBtn = document.getElementById('autoSpeakToggleBtn');
+        autoSpeakBtn.classList.add('active');
+        document.getElementById('iconAutoSpeakOff').style.display = 'none';
+        document.getElementById('iconAutoSpeak').style.display = 'block';
+    } else {
+        document.getElementById('iconAutoSpeakOff').style.display = 'block';
+        document.getElementById('iconAutoSpeak').style.display = 'none';
+    }
+    
     detectJsonFiles();
     initSpeechRecognition();
 });
@@ -325,7 +504,6 @@ async function detectJsonFiles() {
     fileSelect.innerHTML = '<option value="">Loading files...</option>';
     availableFiles = [];
     
-    // Check predefined files
     for (const filename of jsonFilesToCheck) {
         try {
             const response = await fetch(filename, { method: 'HEAD' });
@@ -339,7 +517,6 @@ async function detectJsonFiles() {
             const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
             return `<option value="${file}">${capitalizedName}</option>`;
         }).join('');
-        // Add custom file option
         fileSelect.innerHTML += '<option value="__custom__">📁 Load Custom File...</option>';
         loadCategories();
     } else {
@@ -352,16 +529,13 @@ async function loadCustomFile() {
     const customFileName = prompt('Enter the JSON filename (e.g., myfile.json):');
     if (!customFileName) return;
     
-    // Ensure .json extension
     const fileName = customFileName.endsWith('.json') ? customFileName : customFileName + '.json';
     
     try {
         const response = await fetch(fileName, { method: 'HEAD' });
         if (response.ok) {
-            // Add to available files if not already there
             if (!availableFiles.includes(fileName)) {
                 availableFiles.push(fileName);
-                // Rebuild dropdown
                 const fileSelect = document.getElementById("fileSelect");
                 fileSelect.innerHTML = availableFiles.map(file => {
                     const displayName = file.replace('.json', '').replace(/[-_]/g, ' ');
@@ -369,7 +543,6 @@ async function loadCustomFile() {
                     return `<option value="${file}">${capitalizedName}</option>`;
                 }).join('');
                 fileSelect.innerHTML += '<option value="__custom__">📁 Load Custom File...</option>';
-                // Select the new file
                 fileSelect.value = fileName;
                 loadCategories();
             } else {
@@ -389,7 +562,6 @@ async function loadCategories() {
     const categorySection = document.getElementById("categorySection");
     const categoryCheckboxes = document.getElementById("categoryCheckboxes");
     
-    // Handle custom file option
     if (selectedFile === '__custom__') {
         loadCustomFile();
         return;
@@ -532,12 +704,18 @@ function startInputTimer() {
 
 function startReviewTimer() {
     clearInterval(timerInterval);
-    let timeLeft = 30;
+    // In auto-speak mode, the auto-next countdown handles timing (10s)
+    // Regular timer still runs for visual display but auto-next drives navigation
+    let timeLeft = isAutoSpeakMode ? 10 : 30;
     updateTimerUI(timeLeft, true);
     timerInterval = setInterval(() => {
         timeLeft--;
         updateTimerUI(timeLeft, true);
-        if (timeLeft <= 0) { clearInterval(timerInterval); nextQuestion(); }
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            // Only auto-advance here if NOT in auto-speak mode (auto-speak has its own timeout)
+            if (!isAutoSpeakMode) nextQuestion();
+        }
     }, 1000);
 }
 
@@ -548,8 +726,13 @@ function speakCurrentHindi() {
 }
 
 function loadQuestion() {
-    stopSpeechIfListening(); // Stop mic if active
-    window.speechSynthesis && window.speechSynthesis.cancel(); // Stop any TTS
+    // Cancel any pending auto-actions from previous question
+    cancelAutoNext();
+    if (autoSubmitTimeout) { clearTimeout(autoSubmitTimeout); autoSubmitTimeout = null; }
+    if (autoSubmitCountdownInterval) { clearInterval(autoSubmitCountdownInterval); autoSubmitCountdownInterval = null; }
+
+    stopSpeechIfListening();
+    window.speechSynthesis && window.speechSynthesis.cancel();
 
     questionEl.style.animation = 'none';
     questionEl.offsetHeight;
@@ -559,7 +742,6 @@ function loadQuestion() {
     questionEl.innerText = currentData.hindi;
     hintTextEl.innerText = currentData.hints ? `💡 Hint: ${currentData.hints}` : "";
 
-    // Speak the Hindi question aloud
     speakHindi(currentData.hindi);
     
     hintBtn.innerHTML = '💡 Show Category';
@@ -573,7 +755,6 @@ function loadQuestion() {
     feedbackEl.style.display = "none";
     feedbackEl.className = "";
 
-    // Show mic button and reset status
     const micBtn = document.getElementById('micBtn');
     const speechStatus = document.getElementById('speechStatus');
     document.querySelector('.input-wrapper').style.display = 'flex';
@@ -582,22 +763,50 @@ function loadQuestion() {
     
     checkBtn.style.display = "block";
     nextBtn.style.display = "none";
+    nextBtn.textContent = 'Next Question (Space)';
     hintBtn.style.display = "inline-block";
     
     progressTextEl.innerText = `Question ${currentIndex + 1} / ${activeQuestions.length}`;
     progressBarEl.style.width = `${((currentIndex) / activeQuestions.length) * 100}%`;
     scoreDisplayEl.querySelector('span:last-child').innerText = `Score: ${currentScore}`;
     
+    // *** CRITICAL: Do NOT auto-focus input on mobile (prevents keyboard popup) ***
+    // Only focus on desktop (non-touch devices)
+   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+// ❌ Do NOT focus if hands-free mode is ON
+if (!isTouchDevice && !isAutoSpeakMode) {
     inputEl.focus();
+}
     startInputTimer();
+
+    // In auto-speak mode, auto-open mic after a short delay
+    // (delay allows Hindi TTS to start first)
+    if (isAutoSpeakMode && recognition) {
+        const hindiDuration = currentData.hindi ? Math.max(1200, currentData.hindi.length * 80) : 1500;
+        setTimeout(() => {
+            // Only open mic if still on input phase
+            if (!inputEl.disabled && checkBtn.style.display === "block" && !isListening) {
+                try {
+                    recognition.start();
+                } catch(e) {
+                    console.warn('Could not start recognition', e);
+                }
+            }
+        }, Math.min(hindiDuration, 2500));
+    }
 }
 
 function checkAnswer() {
-    stopSpeechIfListening(); // Stop mic when checking
+    stopSpeechIfListening();
     clearInterval(timerInterval);
+
+    // Cancel any pending auto-submit
+    if (autoSubmitTimeout) { clearTimeout(autoSubmitTimeout); autoSubmitTimeout = null; }
+    if (autoSubmitCountdownInterval) { clearInterval(autoSubmitCountdownInterval); autoSubmitCountdownInterval = null; }
+
     inputEl.disabled = true;
 
-    // Disable mic during review
     const micBtn = document.getElementById('micBtn');
     if (micBtn) micBtn.disabled = true;
 
@@ -643,7 +852,6 @@ function checkAnswer() {
                 ${category}
             </div>
         `;
-
     }
     
     checkBtn.style.display = "none";
@@ -656,9 +864,15 @@ function checkAnswer() {
     if (speechStatus) speechStatus.className = 'speech-status';
 
     startReviewTimer();
+
+    // In auto-speak mode, start 10-second auto-next countdown
+    if (isAutoSpeakMode) {
+        startAutoNextCountdown();
+    }
 }
 
 function nextQuestion() {
+    cancelAutoNext();
     clearInterval(timerInterval);
     currentIndex++;
     if (currentIndex < activeQuestions.length) loadQuestion();
@@ -667,6 +881,10 @@ function nextQuestion() {
 
 function showEndScreen() {
     stopSpeechIfListening();
+    cancelAutoNext();
+    if (autoSubmitTimeout) { clearTimeout(autoSubmitTimeout); autoSubmitTimeout = null; }
+    if (autoSubmitCountdownInterval) { clearInterval(autoSubmitCountdownInterval); autoSubmitCountdownInterval = null; }
+
     progressBarEl.style.width = "100%";
     mainTitle.innerText = "Quiz Complete! 🎉";
     questionEl.innerText = `You scored ${currentScore} out of ${activeQuestions.length}!`;
@@ -682,7 +900,6 @@ function showEndScreen() {
     progressTextEl.innerText = "All Done!";
     scoreDisplayEl.querySelector('span:last-child').innerText = `Final: ${currentScore}/${activeQuestions.length}`;
 
-    // Hide mic on end screen
     const micBtn = document.getElementById('micBtn');
     const speechStatus = document.getElementById('speechStatus');
     if (micBtn) micBtn.style.display = 'none';
@@ -729,7 +946,6 @@ function resetGameState() {
     restartBtn.style.display = "none";
     streakDisplayEl.style.display = "none";
 
-    // Reset mic
     const micBtn = document.getElementById('micBtn');
     if (micBtn) { micBtn.style.display = 'flex'; micBtn.disabled = false; }
     resetMicButton();
@@ -756,11 +972,15 @@ document.addEventListener("keydown", function(event) {
             initializeQuiz();
         } else if (!inputEl.disabled && checkBtn.style.display === "block") {
             event.preventDefault();
+            // Cancel auto-submit if manually pressing Enter
+            if (autoSubmitTimeout) { clearTimeout(autoSubmitTimeout); autoSubmitTimeout = null; }
+            if (autoSubmitCountdownInterval) { clearInterval(autoSubmitCountdownInterval); autoSubmitCountdownInterval = null; }
             checkAnswer();
         }
     }
     if (event.code === "Space" && nextBtn.style.display === "block") {
         event.preventDefault();
+        cancelAutoNext();
         nextQuestion();
     }
     if (event.key === 'ArrowDown') {
@@ -772,4 +992,9 @@ document.addEventListener("keydown", function(event) {
         event.preventDefault();
         toggleSpeaker();
     }
+});
+
+// Clicking "Next" manually should cancel auto-next countdown
+nextBtn && nextBtn.addEventListener('click', () => {
+    cancelAutoNext();
 });

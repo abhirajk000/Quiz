@@ -10,6 +10,127 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== AUTO-SPEAK TOAST ===== */
+        .autospeak-toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(30, 41, 59, 0.95);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-family: 'DM Sans', sans-serif;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 9999;
+            border: 1px solid rgba(99, 179, 237, 0.3);
+            backdrop-filter: blur(8px);
+        }
+        .autospeak-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== AUTO-SPEAK BUTTON IMPROVED ===== */
+        .auto-speak-toggle-btn {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px 7px 10px;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            background: rgba(15, 23, 42, 0.8);
+            color: rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+        }
+        .auto-speak-toggle-btn:hover {
+            border-color: rgba(99, 179, 237, 0.5);
+            color: rgba(255,255,255,0.8);
+        }
+        .auto-speak-toggle-btn.active {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.25), rgba(0, 242, 254, 0.15));
+            border-color: rgba(99, 179, 237, 0.7);
+            color: #63b3ed;
+            box-shadow: 0 0 12px rgba(99, 179, 237, 0.3);
+        }
+        .auto-speak-toggle-btn .btn-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+        /* Pulsing animation when active */
+        .auto-speak-toggle-btn.active i {
+            animation: pulseGlow 1.8s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.92); }
+        }
+
+        /* ===== AUTO-COUNTDOWN STATUS STYLE ===== */
+        .speech-status.auto-countdown {
+            color: #f6ad55 !important;
+            font-weight: 600;
+            background: rgba(246, 173, 85, 0.1);
+            border-radius: 8px;
+            padding: 6px 12px;
+        }
+
+        /* ===== NEXT BUTTON AUTO-COUNTDOWN STYLE ===== */
+        #nextBtn.auto-counting {
+            background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4) !important;
+        }
+
+        /* ===== REPOSITION OTHER FIXED BUTTONS ===== */
+        /* Push speaker and theme buttons down on mobile to not overlap */
+        .speaker-toggle-btn {
+            top: 12px;
+            right: 120px; /* shift left to make room for auto-speak */
+        }
+        .theme-toggle-btn {
+            top: 12px;
+            right: 180px;
+        }
+
+        @media (max-width: 480px) {
+            .auto-speak-toggle-btn {
+                top: 8px;
+                right: 8px;
+                padding: 6px 10px 6px 8px;
+                font-size: 0.72rem;
+            }
+            .auto-speak-toggle-btn .btn-label {
+                font-size: 0.65rem;
+            }
+            .speaker-toggle-btn {
+                top: 8px;
+                right: 110px;
+            }
+            .theme-toggle-btn {
+                top: 8px;
+                right: 168px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -23,14 +144,21 @@
     <i id="iconMuted" class="fa-solid fa-volume-xmark"></i>
 </button>
 
+<!-- ===== HANDS-FREE / AUTO-SPEAK TOGGLE ===== -->
+<button class="auto-speak-toggle-btn" onclick="toggleAutoSpeak()" id="autoSpeakToggleBtn" 
+        title="Hands-Free Mode: mic opens automatically, auto-submits 3s after you speak, moves next after 10s">
+    <i id="iconAutoSpeak" class="fa-solid fa-wand-magic-sparkles"></i>
+    <i id="iconAutoSpeakOff" class="fa-solid fa-wand-magic-sparkles"></i>
+    <span class="btn-label" id="autoSpeakLabel"></span>
+</button>
+
 <div class="app-container" id="setupContainer">
 
     <div class="setup-hero">
         <h1 class="setup-title">Translation Quiz</h1>
     </div>
 
-    <!-- Questions + Timer: each on its own single line -->
-       <div class="setup-field full-width">
+    <div class="setup-field full-width">
         <div class="inline-label-row">
             <label class="field-label">Questions : </label>
             <div class="pill-group" id="qCountPills">
@@ -38,7 +166,6 @@
                 <button class="pill active" onclick="setPill(this,'questionCountInput','qCountPills',30)">30</button>
                 <button class="pill" onclick="setPill(this,'questionCountInput','qCountPills',40)">40</button>
                 <button class="pill" onclick="setPill(this,'questionCountInput','qCountPills',60)">60</button>
-
             </div>
             <input type="number" id="questionCountInput" value="30" min="5" max="500">
         </div>
@@ -51,14 +178,11 @@
                 <button class="pill" onclick="setPill(this,'timerInput','timerPills',45)">45s</button>
                 <button class="pill active" onclick="setPill(this,'timerInput','timerPills',60)">60s</button>
                 <button class="pill active" onclick="setPill(this,'timerInput','timerPills',80)">80s</button>
-
             </div>
             <input type="number" id="timerInput" value="60" min="5" max="300">
         </div>
     </div>
-  
 
-    <!-- Topic -->
     <div class="setup-field full-width">
         <label class="field-label">Choose Topic</label>
         <select id="fileSelect" onchange="loadCategories()" class="setup-select">
@@ -66,7 +190,6 @@
         </select>
     </div>
 
-    <!-- Categories -->
     <div id="categorySection" class="setup-field full-width">
         <div class="cat-header">
             <label class="field-labell">Categories</label>
@@ -108,16 +231,15 @@
     <div id="question" onclick="speakCurrentHindi()" title="🔊 Click to replay Hindi">Loading...</div>
     <div id="hintText" class="hint-text"></div>
 
-    <!-- ===== INPUT + MIC BUTTON ===== -->
+    <!-- INPUT + MIC BUTTON -->
     <div class="input-wrapper">
         <input type="text" id="userAnswer" placeholder="Type OR speak your English translation..." autocomplete="off">
-        <button class="mic-btn" id="micBtn" onclick="toggleSpeech()" title="Press M to speak">
+        <button class="mic-btn" id="micBtn" onclick="toggleSpeech()" title="Press ↓ to speak">
             <i id="micIcon" class="fa-solid fa-microphone"></i>
             <i id="micStopIcon" class="fa-solid fa-stop"></i>
         </button>
     </div>
     <div class="speech-status" id="speechStatus"></div>
-    <!-- ============================== -->
     
     <div class="action-buttons">
         <button id="hintBtn" onclick="showCategoryHint()">💡 Show Category</button>

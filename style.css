@@ -624,6 +624,12 @@ button:active { transform: translateY(1px); }
         height: 36px;
     }
     
+    .auto-speak-toggle-btn {
+        right: 98px;
+        width: 36px;
+        height: 36px;
+    }
+    
     .theme-toggle-btn {
         width: 36px;
         height: 36px;
@@ -1006,6 +1012,40 @@ h1, h2, h3 {
 .speaker-toggle-btn.muted {
     color: var(--text-muted);
     opacity: 0.5;
+}
+
+/* Auto-speak toggle button */
+.auto-speak-toggle-btn {
+    position: fixed;
+    top: 18px;
+    right: 118px;
+    z-index: 999;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid var(--card-border);
+    background: var(--card);
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    opacity: 0.5;
+}
+
+.auto-speak-toggle-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--accent);
+}
+
+.auto-speak-toggle-btn.active {
+    color: #a78bfa;
+    opacity: 1;
+    border-color: #a78bfa;
+    background: rgba(167, 139, 250, 0.1);
+    box-shadow: 0 2px 10px rgba(167, 139, 250, 0.3);
 }
 
 #iconSpeaker {
