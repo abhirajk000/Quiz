@@ -52,14 +52,12 @@ Create JSON files with the following structure:
   {
     "hindi": "मैं स्कूल जाता हूँ।",
     "english": "I go to school",
-    "hints": "Present tense",
     "categories": "Simple Present"
   },
   {
     "hindi": "वह किताब पढ़ रही है।",
     "english": "She is reading a book",
-    "hints": "Continuous action",
-    "categories": "Present Continuous"
+]    "categories": "Present Continuous"
   }
 ]
 ```
@@ -184,10 +182,3 @@ Edit CSS custom properties in `style.css`:
 
 This project is open source and available for personal and educational use.
 
-## Contributing
-
-Contributions are welcome! Feel free to submit issues or pull requests.
-
----
-
-**Made with ❤️ for language learners**
