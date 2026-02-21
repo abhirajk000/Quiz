@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Tense Translation Master</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+    <span id="themeIcon">🌙</span>
+</div>
+
+<div class="app-container" id="setupContainer">
+    <div class="logo">🎯</div>
+    <h2>Quiz Setup</h2>
+    
+    <span class="setup-label">Your Name:</span>
+    <input type="text" id="userNameInput" placeholder="e.g. Abhiraj" autocomplete="off">
+    
+    <span class="setup-label">Choose Topic:</span>
+    <select id="fileSelect" onchange="loadCategories()">
+        <option value="">Loading...</option>
+    </select>
+    
+    <div id="categorySection" style="display: none;">
+        <span class="setup-label">Select Categories (optional):</span>
+        <div id="categoryCheckboxes" class="category-checkboxes"></div>
+        <button type="button" id="selectAllBtn" class="category-btn" onclick="toggleAllCategories()">Select All</button>
+    </div>
+    
+    <span class="setup-label">Number of Questions:</span>
+    <input type="number" id="questionCountInput" value="30" min="5" max="500">
+    
+    <span class="setup-label">Time per Question (seconds):</span>
+    <input type="number" id="timerInput" value="60" min="5" max="300">
+    
+    <button id="startBtn" onclick="initializeQuiz()">Start Practice</button>
+</div>
+
+<div class="app-container" id="quizContainer">
+    <div class="stats-bar">
+        <div class="stat-badge score-display" id="scoreDisplay">
+            <span>✓</span>
+            <span>Score: 0</span>
+        </div>
+        <div class="stat-badge streak-display" id="streakDisplay">
+            <span>🔥</span>
+            <span>Streak: 0</span>
+        </div>
+        <div class="stat-badge timer-display" id="timerDisplay">
+            <span>⏱</span>
+            <span>60s</span>
+        </div>
+    </div>
+    
+    <h2 id="mainTitle">Translate</h2>
+    
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div id="progress-text">Question 1 / 30</div>
+    
+    <div id="question">Loading...</div>
+    <div id="hintText" class="hint-text"></div>
+    <div id="categoryHint" class="category-hint"></div>
+    <input type="text" id="userAnswer" placeholder="Type your English translation..." autocomplete="off">
+    
+    <div class="action-buttons">
+        <button id="hintBtn" onclick="showCategoryHint()">💡 Show Category</button>
+    </div>
+    
+    <button id="checkBtn" onclick="checkAnswer()">Check Answer (Enter)</button>
+    <div id="feedback"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next Question (Space)</button>
+    
+    <div id="reviewSection">
+        <h3 style="margin-top: 0;">Your Mistakes:</h3>
+        <div id="reviewList"></div>
+    </div>
+    
+    <button id="reviewBtn" onclick="showReviewScreen()">Review Mistakes</button>
+    <button id="retryBtn" onclick="retryMistakes()">Retry Wrong Answers</button>
+    <button id="restartBtn" onclick="returnToSetup()">Change Topic / Name</button>
+</div>
+
+<script>
+    let activeQuestions = [];
+    let allQuestions = [];
+    let currentIndex = 0;
+    let timerInterval;
+    let customTimeLimit = 60; 
+    let playerName = "Student";
+    let currentScore = 0;
+    let currentStreak = 0;
+    let wrongAnswers = [];
+    let totalQuestions = 30;
+    let availableCategories = [];
+    let selectedCategories = [];
+    let availableFiles = [];
+
+    // List of JSON files to check (add more files here as needed)
+    const jsonFilesToCheck = [
+        'tense.json',
+        'tenses.json',
+        'upsc.json',
+        'vocabulary.json',
+        'grammar.json',
+        'verbs.json'
+    ];
+
+    const setupContainer = document.getElementById("setupContainer");
+    const quizContainer = document.getElementById("quizContainer");
+    
+    const questionEl = document.getElementById("question");
+    const hintTextEl = document.getElementById("hintText");
+    const inputEl = document.getElementById("userAnswer");
+    const feedbackEl = document.getElementById("feedback");
+    const progressTextEl = document.getElementById("progress-text");
+    const progressBarEl = document.getElementById("progressBar");
+    const checkBtn = document.getElementById("checkBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    
+    const reviewBtn = document.getElementById("reviewBtn");
+    const retryBtn = document.getElementById("retryBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    
+    const timerDisplayEl = document.getElementById("timerDisplay");
+    const scoreDisplayEl = document.getElementById("scoreDisplay");
+    const streakDisplayEl = document.getElementById("streakDisplay");
+    const reviewSection = document.getElementById("reviewSection");
+    const reviewList = document.getElementById("reviewList");
+    const mainTitle = document.getElementById("mainTitle");
+    const categoryHintEl = document.getElementById("categoryHint");
+    const hintBtn = document.getElementById("hintBtn");
+
+    // Shuffle array function
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    // Theme toggle
+    function toggleTheme() {
+        document.body.classList.toggle('light-theme');
+        const themeIcon = document.getElementById('themeIcon');
+        const isLight = document.body.classList.contains('light-theme');
+        themeIcon.innerText = isLight ? '☀️' : '🌙';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    // Load saved theme and detect JSON files
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            document.getElementById('themeIcon').innerText = '☀️';
+        }
+        // Detect available JSON files
+        detectJsonFiles();
+    });
+
+    // Detect available JSON files in the root directory
+    async function detectJsonFiles() {
+        const fileSelect = document.getElementById("fileSelect");
+        fileSelect.innerHTML = '<option value="">Loading files...</option>';
+        
+        availableFiles = [];
+        
+        // Check each file
+        for (const filename of jsonFilesToCheck) {
+            try {
+                const response = await fetch(filename, { method: 'HEAD' });
+                if (response.ok) {
+                    availableFiles.push(filename);
+                }
+            } catch (error) {
+                // File doesn't exist, skip it
+            }
+        }
+        
+        // Populate dropdown
+        if (availableFiles.length > 0) {
+            fileSelect.innerHTML = availableFiles.map(file => {
+                const displayName = file.replace('.json', '').replace(/[-_]/g, ' ');
+                const capitalizedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+                return `<option value="${file}">${capitalizedName} (${file})</option>`;
+            }).join('');
+            
+            // Load categories for the first file
+            loadCategories();
+        } else {
+            fileSelect.innerHTML = '<option value="">No JSON files found</option>';
+            alert('No JSON files found in the root directory. Please add JSON files like tense.json, upsc.json, etc.');
+        }
+    }
+
+    // Load categories from selected file
+    async function loadCategories() {
+        const selectedFile = document.getElementById("fileSelect").value;
+        const categorySection = document.getElementById("categorySection");
+        const categoryCheckboxes = document.getElementById("categoryCheckboxes");
+        
+        if (!selectedFile) {
+            categorySection.style.display = "none";
+            return;
+        }
+        
+        try {
+            const response = await fetch(selectedFile);
+            if (!response.ok) throw new Error("File not found");
+            
+            const data = await response.json();
+            
+            // Extract unique categories
+            const categoriesSet = new Set();
+            data.forEach(item => {
+                if (item.categories) {
+                    categoriesSet.add(item.categories);
+                }
+            });
+            
+            availableCategories = Array.from(categoriesSet).sort();
+            
+            if (availableCategories.length > 0) {
+                categorySection.style.display = "block";
+                categoryCheckboxes.innerHTML = availableCategories.map((cat, index) => `
+                    <div class="category-item">
+                        <input type="checkbox" id="cat-${index}" value="${cat}" checked onchange="updateSelectedCategories()">
+                        <label for="cat-${index}">${cat}</label>
+                    </div>
+                `).join('');
+                
+                // Initialize all as selected
+                selectedCategories = [...availableCategories];
+            } else {
+                categorySection.style.display = "none";
+            }
+        } catch (error) {
+            console.error("Error loading categories:", error);
+            categorySection.style.display = "none";
+        }
+    }
+
+    // Update selected categories array
+    function updateSelectedCategories() {
+        selectedCategories = [];
+        availableCategories.forEach((cat, index) => {
+            const checkbox = document.getElementById(`cat-${index}`);
+            if (checkbox && checkbox.checked) {
+                selectedCategories.push(cat);
+            }
+        });
+        console.log('Selected categories:', selectedCategories);
+    }
+
+    // Toggle all categories
+    function toggleAllCategories() {
+        const allChecked = selectedCategories.length === availableCategories.length;
+        availableCategories.forEach((cat, index) => {
+            const checkbox = document.getElementById(`cat-${index}`);
+            if (checkbox) {
+                checkbox.checked = !allChecked;
+            }
+        });
+        updateSelectedCategories();
+        
+        const btn = document.getElementById('selectAllBtn');
+        btn.innerText = allChecked ? 'Select All' : 'Deselect All';
+    }
+
+    // Show category hint
+    function showCategoryHint() {
+        const currentData = activeQuestions[currentIndex];
+        if (currentData.categories) {
+            categoryHintEl.innerText = `📚 Category: ${currentData.categories}`;
+            categoryHintEl.style.display = 'block';
+            hintBtn.disabled = true;
+            hintBtn.style.opacity = '0.5';
+        }
+    }
+
+    // Normalize text for comparison
+    function normalizeText(text) {
+        return text.toLowerCase().replace(/[.,?!'"]/g, '').replace(/\b(a|an|the)\b/g, '').replace(/\s+/g, ' ').trim();
+    }
+
+    async function initializeQuiz() {
+        const nameVal = document.getElementById("userNameInput").value.trim();
+        if (nameVal) playerName = nameVal;
+        
+        const timeVal = parseInt(document.getElementById("timerInput").value);
+        if (timeVal && timeVal >= 5) customTimeLimit = timeVal;
+        
+        const questionCount = parseInt(document.getElementById("questionCountInput").value);
+        if (questionCount && questionCount >= 5) totalQuestions = questionCount;
+        
+        const selectedFile = document.getElementById("fileSelect").value;
+        
+        // Update selected categories before starting
+        updateSelectedCategories();
+        
+        try {
+            // Fetch the JSON file
+            const response = await fetch(selectedFile);
+            if (!response.ok) throw new Error("File not found");
+            
+            const data = await response.json();
+            
+            if (data && data.length > 0) {
+                allQuestions = data;
+                
+                // Filter by selected categories if any are selected
+                let filteredQuestions = allQuestions;
+                if (selectedCategories.length > 0 && selectedCategories.length < availableCategories.length) {
+                    filteredQuestions = allQuestions.filter(q => 
+                        q.categories && selectedCategories.includes(q.categories)
+                    );
+                    console.log(`Filtered to ${filteredQuestions.length} questions from selected categories`);
+                }
+                
+                if (filteredQuestions.length === 0) {
+                    alert("No questions found for the selected categories. Please select at least one category.");
+                    return;
+                }
+                
+                // Shuffle and select questions
+                const shuffled = shuffleArray(filteredQuestions);
+                activeQuestions = shuffled.slice(0, Math.min(totalQuestions, shuffled.length));
+                
+                setupContainer.style.display = "none";
+                quizContainer.style.display = "block";
+                mainTitle.innerText = `${playerName}'s Quiz`;
+                resetGameState();
+                loadQuestion();
+            } else {
+                alert(`No questions found in ${selectedFile}.`);
+            }
+        } catch (error) {
+            alert(`Error loading ${selectedFile}. \n\nIMPORTANT: If you are opening this HTML file directly from your computer, browsers will block fetching JSON files. Please open this folder using VS Code and click "Go Live" (Live Server extension).`);
+        }
+    }
+
+    function updateTimerUI(seconds, isReview = false) {
+        timerDisplayEl.querySelector('span:last-child').innerText = `${seconds}s`;
+        if (!isReview && seconds <= 20) {
+            timerDisplayEl.classList.add('warning');
+        } else {
+            timerDisplayEl.classList.remove('warning');
+        }
+    }
+
+    function startInputTimer() {
+        clearInterval(timerInterval);
+        let timeLeft = customTimeLimit; 
+        updateTimerUI(timeLeft, false);
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerUI(timeLeft, false);
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                checkAnswer();
+            }
+        }, 1000);
+    }
+
+    function startReviewTimer() {
+        clearInterval(timerInterval);
+        let timeLeft = 30; 
+        updateTimerUI(timeLeft, true);
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerUI(timeLeft, true);
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                nextQuestion();
+            }
+        }, 1000);
+    }
+
+    function loadQuestion() {
+        questionEl.style.animation = 'none';
+        questionEl.offsetHeight; 
+        questionEl.style.animation = null; 
+
+        // Load data from the JSON structure
+        let currentData = activeQuestions[currentIndex];
+        questionEl.innerText = currentData.hindi;
+        hintTextEl.innerText = currentData.hints ? `💡 Hint: ${currentData.hints}` : "";
+        
+        // Reset category hint
+        categoryHintEl.style.display = 'none';
+        categoryHintEl.innerText = '';
+        hintBtn.disabled = false;
+        hintBtn.style.opacity = '1';
+        
+        inputEl.value = "";
+        inputEl.disabled = false;
+        
+        feedbackEl.style.display = "none";
+        feedbackEl.className = "";
+        
+        checkBtn.style.display = "block";
+        nextBtn.style.display = "none";
+        hintBtn.style.display = "inline-block";
+        
+        progressTextEl.innerText = `Question ${currentIndex + 1} / ${activeQuestions.length}`;
+        progressBarEl.style.width = `${((currentIndex) / activeQuestions.length) * 100}%`;
+        scoreDisplayEl.querySelector('span:last-child').innerText = `Score: ${currentScore}`;
+        
+        inputEl.focus();
+        startInputTimer();
+    }
+
+    function checkAnswer() {
+        clearInterval(timerInterval);
+        inputEl.disabled = true;
+
+        const rawUserAnswer = inputEl.value;
+        const rawCorrectAnswer = activeQuestions[currentIndex].english;
+        
+        const cleanUserAnswer = normalizeText(rawUserAnswer);
+        const cleanCorrectAnswer = normalizeText(rawCorrectAnswer);
+
+        let isCorrect = (cleanUserAnswer === cleanCorrectAnswer);
+
+        feedbackEl.style.display = "block";
+        
+        if(isCorrect) {
+            currentScore++;
+            currentStreak++;
+            scoreDisplayEl.querySelector('span:last-child').innerText = `Score: ${currentScore}`;
+            feedbackEl.className = "correct-box";
+            feedbackEl.innerHTML = `✓ Correct!<br><em>${rawUserAnswer}</em>`;
+            
+            if(currentStreak > 1) {
+                streakDisplayEl.style.display = "flex";
+                streakDisplayEl.querySelector('span:last-child').innerText = `Streak: ${currentStreak}`;
+            }
+        } else {
+            currentStreak = 0;
+            streakDisplayEl.style.display = "none";
+            
+            wrongAnswers.push({ 
+                hindi: activeQuestions[currentIndex].hindi, 
+                english: rawCorrectAnswer,
+                hints: activeQuestions[currentIndex].hints
+            });
+
+            feedbackEl.className = "wrong-box";
+            feedbackEl.innerHTML = `
+                ✗ Wrong<br>
+                <em style="color:var(--text-secondary);">${rawUserAnswer || "(Blank)"}</em>
+                <div class="actual-answer">Correct: ${rawCorrectAnswer}</div>
+            `;
+        }
+        
+        checkBtn.style.display = "none";
+        nextBtn.style.display = "block";
+        hintBtn.style.display = "none";
+        startReviewTimer();
+    }
+
+    function nextQuestion() {
+        clearInterval(timerInterval);
+        currentIndex++;
+        if (currentIndex < activeQuestions.length) {
+            loadQuestion();
+        } else {
+            showEndScreen();
+        }
+    }
+
+    function showEndScreen() {
+        progressBarEl.style.width = "100%";
+        mainTitle.innerText = "Quiz Complete! 🎉";
+        questionEl.innerText = `${playerName}, you scored ${currentScore} out of ${activeQuestions.length}!`;
+        
+        hintTextEl.style.display = "none";
+        categoryHintEl.style.display = "none";
+        timerDisplayEl.style.display = "none";
+        inputEl.style.display = "none";
+        checkBtn.style.display = "none";
+        nextBtn.style.display = "none";
+        hintBtn.style.display = "none";
+        feedbackEl.style.display = "none";
+        streakDisplayEl.style.display = "none";
+        progressTextEl.innerText = "All Done!";
+        scoreDisplayEl.querySelector('span:last-child').innerText = `Final: ${currentScore}/${activeQuestions.length}`;
+
+        if (wrongAnswers.length > 0) {
+            reviewBtn.style.display = "inline-block";
+            retryBtn.style.display = "none";
+            restartBtn.style.display = "none";
+        } else {
+            questionEl.innerText += "\nFlawless victory! You got everything right! 🏆";
+            restartBtn.style.display = "inline-block";
+        }
+    }
+
+    function showReviewScreen() {
+        questionEl.style.display = "none";
+        reviewBtn.style.display = "none";
+        
+        reviewList.innerHTML = wrongAnswers.map(item => `
+            <div class="review-item">
+                ${item.hindi} - <strong>${item.english}</strong>
+            </div>
+        `).join('');
+        
+        reviewSection.style.display = "block";
+        retryBtn.style.display = "inline-block";
+        restartBtn.style.display = "inline-block";
+    }
+
+    function resetGameState() {
+        currentIndex = 0;
+        currentScore = 0;
+        currentStreak = 0;
+        wrongAnswers = [];
+        
+        mainTitle.innerText = `${playerName}'s Quiz`;
+        questionEl.style.display = "block"; 
+        hintTextEl.style.display = "block";
+        timerDisplayEl.style.display = "inline-block";
+        inputEl.style.display = "block";
+        reviewSection.style.display = "none";
+        reviewBtn.style.display = "none";
+        retryBtn.style.display = "none";
+        restartBtn.style.display = "none";
+        streakDisplayEl.style.display = "none";
+    }
+
+    function retryMistakes() {
+        // Map the wrong answers back into the active pool
+        activeQuestions = wrongAnswers.map(item => { 
+            return { hindi: item.hindi, english: item.english, hints: item.hints }; 
+        });
+        resetGameState();
+        mainTitle.innerText = "Retry Mistakes";
+        loadQuestion();
+    }
+
+    function returnToSetup() {
+        window.location.reload(); 
+    }
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            if (setupContainer.style.display !== "none") {
+                event.preventDefault();
+                initializeQuiz();
+            } else if (!inputEl.disabled && checkBtn.style.display === "block") {
+                event.preventDefault();
+                checkAnswer();
+            }
+        }
+        if (event.code === "Space" && nextBtn.style.display === "block") {
+            event.preventDefault();
+            nextQuestion();
+        }
+    });
+
+</script>
+
+</body>
+</html>
