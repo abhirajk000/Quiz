@@ -1,2067 +1,252 @@
 [
-    {
-        "english": "I go to the gym every morning.",
-        "hindi": "मैं हर सुबह जिम जाता हूँ।",
-        "categories": "Present Simple"
-    },
-    {
-        "english": "She sings classical songs beautifully.",
-        "hindi": "वह बहुत खूबसूरती से शास्त्रीय गीत गाती है।",
-        "categories": "Present Simple"
-    },
-    {
-        "english": "They play cricket on Sundays.",
-        "hindi": "वे रविवार को क्रिकेट खेलते हैं।",
-        "categories": "Present Simple"
-    },
-    {
-        "english": "He always underestimates her capabilities.",
-        "hindi": "वह हमेशा उसकी क्षमताओं को कम आँकता है।",
-        "categories": "Present Simple"
-    },
-    {
-        "english": "People rarely appreciate honest opinions.",
-        "hindi": "लोग शायद ही ईमानदार राय की सराहना करते हैं।",
-        "categories": "Present Simple"
-    },
-    {
-        "english": "I am writing an important report right now.",
-        "hindi": "मैं अभी एक महत्वपूर्ण रिपोर्ट लिख रहा हूँ।",
-        "categories": "Present Continuous"
-    },
-    {
-        "english": "She is preparing dinner in the kitchen.",
-        "hindi": "वह रसोई में रात का खाना बना रही है।",
-        "categories": "Present Continuous"
-    },
-    {
-        "english": "They are discussing the final strategy.",
-        "hindi": "वे अंतिम रणनीति पर चर्चा कर रहे हैं।",
-        "categories": "Present Continuous"
-    },
-    {
-        "english": "He is constantly finding faults in others' work.",
-        "hindi": "वह लगातार दूसरों के काम में कमियाँ निकाल रहा है।",
-        "categories": "Present Continuous"
-    },
-    {
-        "english": "I am wondering how he managed such a huge task alone.",
-        "hindi": "मैं सोच रहा हूँ कि उसने इतना बड़ा काम अकेले कैसे संभाला।",
-        "categories": "Present Continuous"
-    },
-    {
-        "english": "I have completed my assignments already.",
-        "hindi": "मैं अपने असाइनमेंट पहले ही पूरा कर चुका हूँ।",
-        "categories": "Present Perfect"
-    },
-    {
-        "english": "She has visited Delhi many times.",
-        "hindi": "वह कई बार दिल्ली जा चुकी है।",
-        "categories": "Present Perfect"
-    },
-    {
-        "english": "They have finished their project work.",
-        "hindi": "उन्होंने अपना प्रोजेक्ट का काम खत्म कर लिया है।",
-        "categories": "Present Perfect"
-    },
-    {
-        "english": "He has never understood her feelings truly.",
-        "hindi": "उसने कभी भी उसके जज़्बातों को सच में नहीं समझा।",
-        "categories": "Present Perfect"
-    },
-    {
-        "english": "I have realised my priorities after many failures.",
-        "hindi": "कई असफलताओं के बाद मुझे अपनी प्राथमिकताएँ समझ में आईं।",
-        "categories": "Present Perfect"
-    },
-    {
-        "english": "I went to the exhibition yesterday.",
-        "hindi": "मैं कल प्रदर्शनी में गया था।",
-        "categories": "Past Simple"
-    },
-    {
-        "english": "She called me in the evening.",
-        "hindi": "उसने मुझे शाम को फोन किया।",
-        "categories": "Past Simple"
-    },
-    {
-        "english": "They left the office early.",
-        "hindi": "वे ऑफिस से जल्दी निकल गए।",
-        "categories": "Past Simple"
-    },
-    {
-        "english": "He ignored my advice completely.",
-        "hindi": "उसने मेरी सलाह को पूरी तरह नज़रअंदाज़ कर दिया।",
-        "categories": "Past Simple"
-    },
-    {
-        "english": "I regretted trusting him so blindly.",
-        "hindi": "मैंने उस पर आँख बंद करके भरोसा करने पर पछताया।",
-        "categories": "Past Simple"
-    },
-    {
-        "english": "I was studying when he called me.",
-        "hindi": "जब उसने मुझे फोन किया, तब मैं पढ़ाई कर रहा था।",
-        "categories": "Past Continuous"
-    },
-    {
-        "english": "She was waiting for you at the station.",
-        "hindi": "वह स्टेशन पर तुम्हारा इंतज़ार कर रही थी।",
-        "categories": "Past Continuous"
-    },
-    {
-        "english": "They were discussing the issue seriously.",
-        "hindi": "वे उस मुद्दे पर गंभीरता से चर्चा कर रहे थे।",
-        "categories": "Past Continuous"
-    },
-    {
-        "english": "He was trying to manipulate everyone's opinion.",
-        "hindi": "वह सभी की राय को नियंत्रित करने की कोशिश कर रहा था।",
-        "categories": "Past Continuous"
-    },
-    {
-        "english": "I was wondering why they refused my proposal.",
-        "hindi": "मैं सोच रहा था कि उन्होंने मेरे प्रस्ताव को क्यों ठुकरा दिया।",
-        "categories": "Past Continuous"
-    },
-    {
-        "english": "I had completed my homework before dinner.",
-        "hindi": "मैंने रात के खाने से पहले अपना होमवर्क पूरा कर लिया था।",
-        "categories": "Past Perfect"
-    },
-    {
-        "english": "She had left before I reached.",
-        "hindi": "मेरे पहुँचने से पहले वह जा चुकी थी।",
-        "categories": "Past Perfect"
-    },
-    {
-        "english": "They had informed me about their plan.",
-        "hindi": "उन्होंने मुझे अपने प्लान के बारे में बता दिया था।",
-        "categories": "Past Perfect"
-    },
-    {
-        "english": "He had hidden the truth from everyone deliberately.",
-        "hindi": "उसने जानबूझकर सब से सच छुपाया था।",
-        "categories": "Past Perfect"
-    },
-    {
-        "english": "I had never expected such betrayal from my friend.",
-        "hindi": "मैंने कभी अपने दोस्त से ऐसी विश्वासघात की उम्मीद नहीं की थी।",
-        "categories": "Past Perfect"
-    },
-    {
-        "english": "I will go there tomorrow.",
-        "hindi": "मैं कल वहाँ जाऊँगा।",
-        "categories": "Future Simple"
-    },
-    {
-        "english": "She will attend the meeting.",
-        "hindi": "वह मीटिंग में शामिल होगी।",
-        "categories": "Future Simple"
-    },
-    {
-        "english": "They will arrive by evening.",
-        "hindi": "वे शाम तक पहुँच जाएँगे।",
-        "categories": "Future Simple"
-    },
-    {
-        "english": "He will never understand the depth of her pain.",
-        "hindi": "वह कभी उसके दर्द की गहराई को नहीं समझ पाएगा।",
-        "categories": "Future Simple"
-    },
-    {
-        "english": "I will definitely confront him for his behaviour.",
-        "hindi": "मैं निश्चित ही उसके व्यवहार के लिए उसका सामना करूँगा।",
-        "categories": "Future Simple"
-    },
-    {
-        "english": "I will be working on this project tomorrow.",
-        "hindi": "मैं कल इस प्रोजेक्ट पर काम कर रहा होऊँगा।",
-        "categories": "Future Continuous"
-    },
-    {
-        "english": "She will be preparing for her exams.",
-        "hindi": "वह अपनी परीक्षा की तैयारी कर रही होगी।",
-        "categories": "Future Continuous"
-    },
-    {
-        "english": "They will be travelling to Jaipur next week.",
-        "hindi": "वे अगले हफ्ते जयपुर की यात्रा कर रहे होंगे।",
-        "categories": "Future Continuous"
-    },
-    {
-        "english": "He will be analysing the results critically.",
-        "hindi": "वह परिणामों का गंभीरता से विश्लेषण कर रहा होगा।",
-        "categories": "Future Continuous"
-    },
-    {
-        "english": "I will be wondering if my decision was right.",
-        "hindi": "मैं सोच रहा होऊँगा कि मेरा निर्णय सही था या नहीं।",
-        "categories": "Future Continuous"
-    },
-    {
-        "english": "I will have completed the task by tomorrow.",
-        "hindi": "मैं कल तक काम पूरा कर चुका होऊँगा।",
-        "categories": "Future Perfect"
-    },
-    {
-        "english": "She will have reached home by evening.",
-        "hindi": "वह शाम तक घर पहुँच चुकी होगी।",
-        "categories": "Future Perfect"
-    },
-    {
-        "english": "They will have submitted the report by Monday.",
-        "hindi": "वे सोमवार तक रिपोर्ट जमा कर चुके होंगे।",
-        "categories": "Future Perfect"
-    },
-    {
-        "english": "He will have achieved all his goals before turning thirty.",
-        "hindi": "तीस साल का होने से पहले उसने अपने सारे लक्ष्य प्राप्त कर लिए होंगे।",
-        "categories": "Future Perfect"
-    },
-    {
-        "english": "I will have realised my mistakes by then.",
-        "hindi": "तब तक मुझे अपनी गलतियाँ समझ में आ चुकी होंगी।",
-        "categories": "Future Perfect"
-    },
-    {
-        "english": "If you work hard, you will succeed.",
-        "hindi": "अगर तुम मेहनत करोगे तो सफल हो जाओगे।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "If he had money, he would travel the world.",
-        "hindi": "अगर उसके पास पैसा होता तो वह पूरी दुनिया घूमता।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "If I were you, I would not trust him.",
-        "hindi": "अगर मैं तुम्हारी जगह होता तो उस पर भरोसा नहीं करता।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "If she had known, she would have helped you.",
-        "hindi": "अगर उसे पता होता तो वह तुम्हारी मदद करती।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "If they invited me, I would definitely go.",
-        "hindi": "अगर उन्होंने मुझे बुलाया होता तो मैं ज़रूर जाता।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "Had I known his intentions, I would never have agreed.",
-        "hindi": "अगर मुझे उसकी मंशा पता होती तो मैं कभी नहीं मानता।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "If only he realised how much he hurt her.",
-        "hindi": "काश उसे एहसास होता कि उसने उसे कितना दुख पहुँचाया।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "If you had been honest, people would respect you more.",
-        "hindi": "अगर तुम ईमानदार होते तो लोग तुम्हारा और सम्मान करते।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "Had it not rained, we would have gone for trekking.",
-        "hindi": "अगर बारिश नहीं होती तो हम ट्रेकिंग पर जाते।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "If she studied harder, she could top the class.",
-        "hindi": "अगर वह और मेहनत करे तो वह कक्षा में टॉप कर सकती है।",
-        "categories": "Conditional"
-    },
-    {
-        "english": "I would have helped you if I had known.",
-        "hindi": "अगर मुझे पता होता तो मैं तुम्हारी मदद करता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "She would have arrived earlier if she had taken a cab.",
-        "hindi": "अगर उसने टैक्सी ली होती तो वह जल्दी पहुँच जाती।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "They would have finished on time if they had planned better.",
-        "hindi": "अगर उन्होंने बेहतर योजना बनाई होती तो वे समय पर खत्म कर लेते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "He would have understood if you had explained patiently.",
-        "hindi": "अगर तुमने धैर्य से समझाया होता तो वह समझ जाता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "I would have bought that house if I had enough money.",
-        "hindi": "अगर मेरे पास पर्याप्त पैसे होते तो मैं वह घर खरीद लेता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If they had not lied, people would have trusted them.",
-        "hindi": "अगर उन्होंने झूठ न बोला होता तो लोग उन पर भरोसा करते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "Had you studied well, you would have passed the exam easily.",
-        "hindi": "अगर तुमने अच्छे से पढ़ाई की होती तो परीक्षा आसानी से पास कर लेते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If she had listened to me, this problem wouldn’t have occurred.",
-        "hindi": "अगर उसने मेरी बात मानी होती तो यह समस्या नहीं आती।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "Had I been there, I would have handled everything calmly.",
-        "hindi": "अगर मैं वहाँ होता तो सब कुछ शांतिपूर्वक संभाल लेता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If he had arrived earlier, he would have met her.",
-        "hindi": "अगर वह जल्दी पहुँचा होता तो उससे मिल लेता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "I would be working on my novel now if I were at home.",
-        "hindi": "अगर मैं घर पर होता तो अभी अपने उपन्यास पर काम कर रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "She would be preparing lunch if guests were coming.",
-        "hindi": "अगर मेहमान आ रहे होते तो वह खाना बना रही होती।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "They would be studying for exams if they were serious.",
-        "hindi": "अगर वे गंभीर होते तो परीक्षा की तैयारी कर रहे होते।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "He would be travelling to office if it was a weekday.",
-        "hindi": "अगर आज सप्ताह का कामकाजी दिन होता तो वह ऑफिस जा रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "I would be sleeping if you hadn’t called me.",
-        "hindi": "अगर तुमने फोन नहीं किया होता तो मैं सो रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If he were honest, he would be accepting his mistakes.",
-        "hindi": "अगर वह ईमानदार होता तो अपनी गलतियाँ स्वीकार कर रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If I were not busy, I would be helping you right now.",
-        "hindi": "अगर मैं व्यस्त नहीं होता तो अभी तुम्हारी मदद कर रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If they cared, they would be checking on you daily.",
-        "hindi": "अगर उन्हें परवाह होती तो वे रोज़ तुम्हारा हाल पूछ रहे होते।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "Had she been studying sincerely, she would be getting good marks.",
-        "hindi": "अगर वह ईमानदारी से पढ़ रही होती तो उसके अच्छे नंबर आते।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If it were raining, I would be enjoying tea at home.",
-        "hindi": "अगर बारिश हो रही होती तो मैं घर पर चाय का आनंद ले रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "I wish I knew the answer.",
-        "hindi": "काश मुझे उत्तर पता होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If only he respected his elders.",
-        "hindi": "काश वह बड़ों का सम्मान करता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had I been informed earlier, I could have saved the situation.",
-        "hindi": "अगर मुझे पहले बताया गया होता तो मैं स्थिति को बचा सकता था।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If they were here, we would be discussing the plan.",
-        "hindi": "अगर वे यहाँ होते तो हम योजना पर चर्चा कर रहे होते।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If she had practised more, she would have sung beautifully.",
-        "hindi": "अगर उसने अधिक अभ्यास किया होता तो वह सुंदर गा पाती।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "I wish he were as brave as his brother.",
-        "hindi": "काश वह अपने भाई की तरह बहादुर होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he had been working sincerely, he would have got promoted by now.",
-        "hindi": "अगर वह ईमानदारी से काम कर रहा होता तो अब तक पदोन्नत हो गया होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "I wish I had not wasted my precious time on him.",
-        "hindi": "काश मैंने अपना कीमती समय उस पर बर्बाद न किया होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If only they had supported you back then.",
-        "hindi": "काश तब उन्होंने तुम्हारा समर्थन किया होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were studying sincerely, he would be understanding the concepts.",
-        "hindi": "अगर वह ईमानदारी से पढ़ रहा होता तो उसे अवधारणाएँ समझ आ रही होतीं।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If I had realised its importance, I would not have ignored it.",
-        "hindi": "अगर मुझे इसकी महत्ता का एहसास होता तो मैंने इसे नज़रअंदाज़ नहीं किया होता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I could turn back time and fix my mistakes.",
-        "hindi": "काश मैं समय को पीछे कर पाता और अपनी गलतियाँ सुधार पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were here, he would be guiding us calmly.",
-        "hindi": "अगर वह यहाँ होता तो हमें शांतिपूर्वक मार्गदर्शन कर रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "Had you worked hard, you would have achieved great heights.",
-        "hindi": "अगर तुमने कड़ी मेहनत की होती तो ऊँचाइयों को छू लेते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If they had been saving regularly, they would have bought a house by now.",
-        "hindi": "अगर वे नियमित रूप से बचत कर रहे होते तो अब तक घर खरीद चुके होते।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "If only she had taken her career seriously.",
-        "hindi": "काश उसने अपने करियर को गंभीरता से लिया होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "I wish I had learnt guitar when I was young.",
-        "hindi": "काश मैंने जवान रहते गिटार सीखा होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were reading attentively, he would understand the story.",
-        "hindi": "अगर वह ध्यान से पढ़ रहा होता तो कहानी समझ जाता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If you had started early, you would have reached on time.",
-        "hindi": "अगर तुमने जल्दी शुरू किया होता तो समय पर पहुँच जाते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "I wish he had realised her worth before losing her.",
-        "hindi": "काश उसने उसे खोने से पहले उसकी कदर की होती।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If only they understood the gravity of the situation.",
-        "hindi": "काश उन्हें स्थिति की गंभीरता समझ आती।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If you had been exercising regularly, you would be healthier now.",
-        "hindi": "अगर तुम नियमित रूप से व्यायाम कर रहे होते तो अब स्वस्थ होते।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had I known about his deceit, I would never have trusted him.",
-        "hindi": "अगर मुझे उसके धोखे के बारे में पता होता तो मैं उस पर कभी भरोसा न करता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I had kept my promise to her.",
-        "hindi": "काश मैंने उससे किया अपना वादा निभाया होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If they were working diligently, they would be progressing rapidly.",
-        "hindi": "अगर वे मेहनत से काम कर रहे होते तो तेजी से प्रगति कर रहे होते।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "I wish I were capable enough to guide them.",
-        "hindi": "काश मैं उन्हें मार्गदर्शन देने में सक्षम होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had you not helped me, I would have failed miserably.",
-        "hindi": "अगर तुमने मेरी मदद नहीं की होती तो मैं बुरी तरह असफल हो जाता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If she had not been wasting time, she would have completed the work.",
-        "hindi": "अगर उसने समय बर्बाद नहीं किया होता तो वह काम पूरा कर लेती।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I could express my feelings to her.",
-        "hindi": "काश मैं अपनी भावनाएँ उससे व्यक्त कर पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If they had been investing wisely, they would be rich today.",
-        "hindi": "अगर वे समझदारी से निवेश कर रहे होते तो आज अमीर होते।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "I wish he had completed his education before marrying.",
-        "hindi": "काश उसने शादी से पहले अपनी पढ़ाई पूरी कर ली होती।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If only they had believed in themselves.",
-        "hindi": "काश उन्होंने खुद पर विश्वास किया होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If she were paying attention, she would be understanding the lecture.",
-        "hindi": "अगर वह ध्यान दे रही होती तो उसे व्याख्यान समझ आ रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If he had acted maturely, this issue would not have arisen.",
-        "hindi": "अगर उसने परिपक्वता से काम लिया होता तो यह समस्या नहीं आती।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "Had I listened to my parents, I would not be suffering today.",
-        "hindi": "अगर मैंने अपने माता-पिता की बात मानी होती तो आज दुखी न होता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I could erase those bitter memories.",
-        "hindi": "काश मैं उन कड़वी यादों को मिटा पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he had not been wasting his time, he would have become successful.",
-        "hindi": "अगर उसने अपना समय बर्बाद नहीं किया होता तो वह सफल हो गया होता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only she realised how deeply he loved her.",
-        "hindi": "काश उसे एहसास होता कि वह उससे कितना गहराई से प्रेम करता है।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had you saved money, you would have been tension free today.",
-        "hindi": "अगर तुमने पैसे बचाए होते तो आज बेफिक्र होते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I were as confident as you are.",
-        "hindi": "काश मैं तुम्हारे जितना आत्मविश्वासी होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he had been working honestly, he would be respected by all.",
-        "hindi": "अगर वह ईमानदारी से काम कर रहा होता तो सब उसका सम्मान करते।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had I known his reality, I would have stayed away.",
-        "hindi": "अगर मुझे उसकी हकीकत पता होती तो मैं दूर ही रहता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only they had followed the rules strictly.",
-        "hindi": "काश उन्होंने नियमों का कड़ाई से पालन किया होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If she had been working continuously, she would have finished by now.",
-        "hindi": "अगर वह लगातार काम कर रही होती तो अब तक खत्म कर लेती।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "If only he had valued his time wisely.",
-        "hindi": "काश उसने अपने समय की सही कदर की होती।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had they understood the instructions, they would not have made mistakes.",
-        "hindi": "अगर उन्होंने निर्देश समझे होते तो गलतियाँ न करते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I could change my past decisions.",
-        "hindi": "काश मैं अपने पिछले फैसलों को बदल पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he had studied consistently, he would have been a scholar.",
-        "hindi": "अगर उसने लगातार पढ़ाई की होती तो वह विद्वान बन जाता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only they realised the importance of time management.",
-        "hindi": "काश उन्हें समय प्रबंधन का महत्व समझ आता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had I been saving since childhood, I would be financially strong now.",
-        "hindi": "अगर मैं बचपन से बचत कर रहा होता तो अब आर्थिक रूप से मजबूत होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "If only he had understood the value of true friendship.",
-        "hindi": "काश उसने सच्ची दोस्ती का महत्व समझा होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had you apologised earlier, this problem would not have existed.",
-        "hindi": "अगर तुमने पहले माफी मांग ली होती तो यह समस्या उत्पन्न न होती।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If they had been working in harmony, the project would have been successful.",
-        "hindi": "अगर वे तालमेल में काम कर रहे होते तो परियोजना सफल हो जाती।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "If only I were wise enough to make better decisions.",
-        "hindi": "काश मैं इतने बुद्धिमान होता कि बेहतर फैसले ले पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If she had practised patience, she would have handled the situation better.",
-        "hindi": "अगर उसने धैर्य का अभ्यास किया होता तो वह स्थिति को बेहतर संभाल पाती।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "Had they realised their mistake earlier, they would not have faced humiliation.",
-        "hindi": "अगर उन्होंने अपनी गलती पहले ही समझ ली होती तो उन्हें अपमान का सामना न करना पड़ता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If he were studying medicine, he would be a doctor by now.",
-        "hindi": "अगर वह चिकित्सा पढ़ रहा होता तो अब तक डॉक्टर बन चुका होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If only I could rebuild my broken dreams.",
-        "hindi": "काश मैं अपने टूटे हुए सपनों को फिर से बना पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If you had been reading regularly, your vocabulary would have improved.",
-        "hindi": "अगर तुम नियमित रूप से पढ़ रहे होते तो तुम्हारा शब्दकोश सुधर गया होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had I prepared well, I would have answered confidently.",
-        "hindi": "अगर मैंने अच्छी तैयारी की होती तो आत्मविश्वास से उत्तर देता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only they had maintained discipline in the team.",
-        "hindi": "काश उन्होंने टीम में अनुशासन बनाए रखा होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were helping you, the work would be easier.",
-        "hindi": "अगर वह तुम्हारी मदद कर रहा होता तो काम आसान होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "Had you respected your teachers, you would have learnt a lot.",
-        "hindi": "अगर तुमने अपने शिक्षकों का सम्मान किया होता तो बहुत कुछ सीखते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I could rectify all my mistakes.",
-        "hindi": "काश मैं अपनी सारी गलतियाँ सुधार पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If she had been studying properly, she would have passed the exam.",
-        "hindi": "अगर वह ठीक से पढ़ाई कर रही होती तो परीक्षा पास कर लेती।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had they realised the risk, they would not have invested there.",
-        "hindi": "अगर उन्होंने जोखिम समझा होता तो वहाँ निवेश न करते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only he knew how to control his anger.",
-        "hindi": "काश उसे अपने गुस्से पर काबू रखना आता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were paying attention, he would be solving the problem easily.",
-        "hindi": "अगर वह ध्यान दे रहा होता तो समस्या आसानी से हल कर रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "If I had been working sincerely, I would have achieved my goals by now.",
-        "hindi": "अगर मैं ईमानदारी से काम कर रहा होता तो अब तक अपने लक्ष्य हासिल कर चुका होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had you taken his advice, you would not have suffered losses.",
-        "hindi": "अगर तुमने उसकी सलाह मानी होती तो नुकसान न उठाना पड़ता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only they respected the value of hard work.",
-        "hindi": "काश उन्होंने मेहनत के मूल्य को समझा होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he had been studying law, he would be a lawyer now.",
-        "hindi": "अगर वह कानून की पढ़ाई कर रहा होता तो अब वकील बन चुका होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had I invested in property, I would have been wealthy today.",
-        "hindi": "अगर मैंने संपत्ति में निवेश किया होता तो आज अमीर होता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I were capable of forgiving him completely.",
-        "hindi": "काश मैं उसे पूरी तरह माफ करने में सक्षम होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If they had been focusing on quality, customers would have been satisfied.",
-        "hindi": "अगर वे गुणवत्ता पर ध्यान दे रहे होते तो ग्राहक संतुष्ट होते।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had you understood the concept, you would have solved the questions easily.",
-        "hindi": "अगर तुमने अवधारणा समझी होती तो प्रश्न आसानी से हल कर लेते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only she knew how much we care for her.",
-        "hindi": "काश उसे पता होता कि हम उससे कितना प्यार करते हैं।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were learning music, he would be performing on stage.",
-        "hindi": "अगर वह संगीत सीख रहा होता तो मंच पर प्रस्तुति दे रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "Had they acted wisely, they would not have lost everything.",
-        "hindi": "अगर उन्होंने समझदारी से काम लिया होता तो सब कुछ न खोते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I could erase all my painful memories.",
-        "hindi": "काश मैं अपनी सारी दर्दभरी यादें मिटा पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If you had been listening carefully, you would have understood the topic.",
-        "hindi": "अगर तुम ध्यान से सुन रहे होते तो विषय समझ जाते।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had I been saving money, I would not be facing financial crisis now.",
-        "hindi": "अगर मैं पैसे बचा रहा होता तो अब आर्थिक संकट का सामना न कर रहा होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "If only she realised her true potential.",
-        "hindi": "काश उसे अपनी असली क्षमता का एहसास होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were following the plan, he would be achieving results.",
-        "hindi": "अगर वह योजना का पालन कर रहा होता तो परिणाम प्राप्त कर रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "Had you been learning consistently, you would have been fluent by now.",
-        "hindi": "अगर तुम लगातार सीख रहे होते तो अब तक धाराप्रवाह हो गए होते।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "If only I could undo my past mistakes.",
-        "hindi": "काश मैं अपनी पिछली गलतियाँ मिटा पाता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had they understood the consequences, they would not have argued.",
-        "hindi": "अगर उन्होंने परिणाम समझे होते तो बहस न करते।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only she were as confident as her sister.",
-        "hindi": "काश वह अपनी बहन की तरह आत्मविश्वासी होती।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he had been practising regularly, he would have become an expert.",
-        "hindi": "अगर वह नियमित रूप से अभ्यास कर रहा होता तो विशेषज्ञ बन गया होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had I studied harder, I would have topped the class.",
-        "hindi": "अगर मैंने और मेहनत से पढ़ाई की होती तो कक्षा में प्रथम आता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only they could understand my silence.",
-        "hindi": "काश वे मेरी ख़ामोशी समझ पाते।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he were reading the document carefully, he would be noticing the errors.",
-        "hindi": "अगर वह दस्तावेज़ ध्यान से पढ़ रहा होता तो गलतियाँ देख रहा होता।",
-        "categories": "Conditional Continuous"
-    },
-    {
-        "english": "Had they been supporting him, he would have succeeded.",
-        "hindi": "अगर वे उसका समर्थन कर रहे होते तो वह सफल हो जाता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "If only I had courage to speak the truth.",
-        "hindi": "काश मुझमें सच कहने का साहस होता।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Had he prepared thoroughly, he would not have faced failure.",
-        "hindi": "अगर उसने पूरी तैयारी की होती तो असफलता का सामना न करना पड़ता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only she were here to see my success.",
-        "hindi": "काश वह यहाँ होती ताकि मेरी सफलता देख पाती।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "If he had been working out regularly, he would be fit today.",
-        "hindi": "अगर वह नियमित रूप से कसरत कर रहा होता तो आज फिट होता।",
-        "categories": "Conditional Perfect Continuous"
-    },
-    {
-        "english": "Had I known about the meeting, I would have reached on time.",
-        "hindi": "अगर मुझे बैठक के बारे में पता होता तो समय पर पहुँच जाता।",
-        "categories": "Conditional Perfect"
-    },
-    {
-        "english": "If only I could find peace within myself.",
-        "hindi": "काश मुझे अपने भीतर शांति मिल पाती।",
-        "categories": "Subjunctive"
-    },
-    {
-        "english": "Would you please help me with this task?",
-        "hindi": "क्या आप कृपया इस काम में मेरी मदद करेंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "I would like to visit India someday.",
-        "hindi": "मैं किसी दिन भारत जाना चाहूंगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "She would always sing while cooking.",
-        "hindi": "वह खाना बनाते समय हमेशा गाया करती थी।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you mind closing the window?",
-        "hindi": "क्या आप खिड़की बंद कर देंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "I would prefer tea over coffee.",
-        "hindi": "मैं कॉफी के बजाय चाय पसंद करूंगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "Could you pass me the salt, please?",
-        "hindi": "क्या आप मुझे नमक दे सकते हैं?",
-        "categories": "Would"
-    },
-    {
-        "english": "She could swim when she was five.",
-        "hindi": "वह पांच साल की उम्र में तैर सकती थी।",
-        "categories": "Would"
-    },
-    {
-        "english": "Could I borrow your pen for a moment?",
-        "hindi": "क्या मैं एक पल के लिए आपका पेन ले सकता हूं?",
-        "categories": "Would"
-    },
-    {
-        "english": "This could be a great opportunity for us.",
-        "hindi": "यह हमारे लिए एक बेहतरीन अवसर हो सकता है।",
-        "categories": "Would"
-    },
-    {
-        "english": "Could you speak a bit louder?",
-        "hindi": "क्या आप थोड़ा तेज़ बोल सकते हैं?",
-        "categories": "Would"
-    },
-    {
-        "english": "You should eat more vegetables.",
-        "hindi": "आपको अधिक सब्जियां खानी चाहिए।",
-        "categories": "Would"
-    },
-    {
-        "english": "She should have studied harder for the exam.",
-        "hindi": "उसे परीक्षा के लिए और मेहनत से पढ़ना चाहिए था।",
-        "categories": "Would"
-    },
-    {
-        "english": "We should respect our elders.",
-        "hindi": "हमें अपने बुजुर्गों का सम्मान करना चाहिए।",
-        "categories": "Would"
-    },
-    {
-        "english": "You should not waste your time.",
-        "hindi": "आपको अपना समय बर्बाद नहीं करना चाहिए।",
-        "categories": "Would"
-    },
-    {
-        "english": "Should I call you later?",
-        "hindi": "क्या मुझे आपको बाद में फोन करना चाहिए?",
-        "categories": "Would"
-    },
-    {
-        "english": "May I come in, sir?",
-        "hindi": "क्या मैं अंदर आ सकता हूं, सर?",
-        "categories": "Would"
-    },
-    {
-        "english": "It may rain today.",
-        "hindi": "आज बारिश हो सकती है।",
-        "categories": "Would"
-    },
-    {
-        "english": "May you have a wonderful day!",
-        "hindi": "आपका दिन शुभ हो!",
-        "categories": "Would"
-    },
-    {
-        "english": "She may not attend the meeting.",
-        "hindi": "हो सकता है वह मीटिंग में शामिल न हो।",
-        "categories": "Would"
-    },
-    {
-        "english": "May I use your phone?",
-        "hindi": "क्या मैं आपका फोन इस्तेमाल कर सकता हूं?",
-        "categories": "Would"
-    },
-    {
-        "english": "It might be difficult to solve this problem.",
-        "hindi": "इस समस्या को हल करना मुश्किल हो सकता है।",
-        "categories": "Would"
-    },
-    {
-        "english": "She might come to the party tonight.",
-        "hindi": "हो सकता है वह आज रात पार्टी में आए।",
-        "categories": "Would"
-    },
-    {
-        "english": "He might have forgotten about our meeting.",
-        "hindi": "हो सकता है उसे हमारी मीटिंग के बारे में भूल गया हो।",
-        "categories": "Would"
-    },
-    {
-        "english": "This might not work as expected.",
-        "hindi": "यह अपेक्षा के अनुसार काम नहीं कर सकता।",
-        "categories": "Would"
-    },
-    {
-        "english": "We might need more time to complete the project.",
-        "hindi": "हमें परियोजना पूरी करने के लिए और समय की आवश्यकता हो सकती है।",
-        "categories": "Would"
-    },
-    {
-        "english": "You might want to reconsider your decision.",
-        "hindi": "आप अपने फैसले पर दोबारा विचार करना चाह सकते हैं।",
-        "categories": "Would"
-    },
-    {
-        "english": "It might snow tomorrow.",
-        "hindi": "कल बर्फ गिर सकती है।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you mind if I opened the window?",
-        "hindi": "क्या आपको कोई आपत्ति है अगर मैं खिड़की खोल दूं?",
-        "categories": "Would"
-    },
-    {
-        "english": "I could have helped you if you had asked.",
-        "hindi": "अगर आपने पूछा होता तो मैं आपकी मदद कर सकता था।",
-        "categories": "Would"
-    },
-    {
-        "english": "You should have been more careful.",
-        "hindi": "आपको और सावधान होना चाहिए था।",
-        "categories": "Would"
-    },
-    {
-        "english": "She may have misunderstood your message.",
-        "hindi": "हो सकता है उसने आपके संदेश को गलत समझा हो।",
-        "categories": "Would"
-    },
-    {
-        "english": "He might have taken a different route.",
-        "hindi": "हो सकता है उसने अलग रास्ता लिया हो।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would it be okay if I borrowed your book?",
-        "hindi": "क्या यह ठीक होगा अगर मैं आपकी किताब उधार लूं?",
-        "categories": "Would"
-    },
-    {
-        "english": "Should we inform them about the changes?",
-        "hindi": "क्या हमें उन्हें बदलावों के बारे में बताना चाहिए?",
-        "categories": "Would"
-    },
-    {
-        "english": "May I have your attention please?",
-        "hindi": "क्या मैं आपका ध्यान आकर्षित कर सकता हूं?",
-        "categories": "Would"
-    },
-    {
-        "english": "It might take longer than expected.",
-        "hindi": "इसमें अपेक्षा से अधिक समय लग सकता है।",
-        "categories": "Would"
-    },
-    {
-        "english": "You could try calling him again.",
-        "hindi": "आप उसे दोबारा फोन करने की कोशिश कर सकते हैं।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you be interested in joining our team?",
-        "hindi": "क्या आप हमारी टीम में शामिल होने में दिलचस्पी रखते हैं?",
-        "categories": "Would"
-    },
-    {
-        "english": "Should I wait for you or go ahead?",
-        "hindi": "क्या मुझे आपका इंतज़ार करना चाहिए या आगे बढ़ जाना चाहिए?",
-        "categories": "Would"
-    },
-    {
-        "english": "I would rather stay home than go out today.",
-        "hindi": "मैं आज बाहर जाने के बजाय घर पर ही रहना पसंद करूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would have helped you if I had known about it.",
-        "hindi": "अगर मुझे इसके बारे में पता होता तो मैं तुम्हारी मदद करता।",
-        "categories": "Would"
-    },
-    {
-        "english": "He behaves as though he would never make a mistake.",
-        "hindi": "वह ऐसा व्यवहार करता है जैसे वह कभी गलती नहीं करेगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you mind closing the door?",
-        "hindi": "क्या आप दरवाजा बंद कर देंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "I wish you would listen to me once.",
-        "hindi": "काश तुम मेरी बात एक बार सुनते।",
-        "categories": "Would"
-    },
-    {
-        "english": "If I were you, I would not do this.",
-        "hindi": "अगर मैं तुम्हारी जगह होता तो यह नहीं करता।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would like to have a cup of tea.",
-        "hindi": "मैं एक कप चाय लेना चाहूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "He said he would call me later.",
-        "hindi": "उसने कहा था कि वह मुझे बाद में फोन करेगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "I knew it would rain today.",
-        "hindi": "मुझे पता था कि आज बारिश होगी।",
-        "categories": "Would"
-    },
-    {
-        "english": "She promised she would help me.",
-        "hindi": "उसने वादा किया था कि वह मेरी मदद करेगी।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you please pass me the salt?",
-        "hindi": "क्या आप मुझे नमक दे देंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "If it rained, we would cancel the trip.",
-        "hindi": "अगर बारिश होती तो हम यात्रा रद्द कर देते।",
-        "categories": "Would"
-    },
-    {
-        "english": "He would often come to meet me in the evenings.",
-        "hindi": "वह अक्सर शाम को मुझसे मिलने आता था।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would never lie to you.",
-        "hindi": "मैं तुमसे कभी झूठ नहीं बोलूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "They said they would finish the work by tomorrow.",
-        "hindi": "उन्होंने कहा था कि वे काम कल तक खत्म कर देंगे।",
-        "categories": "Would"
-    },
-    {
-        "english": "If I had money, I would buy a new phone.",
-        "hindi": "अगर मेरे पास पैसे होते तो मैं नया फोन खरीदता।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would it be okay if I left early today?",
-        "hindi": "क्या मैं आज जल्दी चला जाऊँ तो ठीक रहेगा?",
-        "categories": "Would"
-    },
-    {
-        "english": "He told me he would arrive by evening.",
-        "hindi": "उसने मुझे बताया था कि वह शाम तक पहुँच जाएगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would love to visit London someday.",
-        "hindi": "मैं किसी दिन लंदन जाना चाहूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "She would sing beautifully when she was young.",
-        "hindi": "वह जब छोटी थी तब बहुत सुंदर गाती थी।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you like something to drink?",
-        "hindi": "क्या आप कुछ पीना चाहेंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "If I knew his number, I would call him.",
-        "hindi": "अगर मुझे उसका नंबर पता होता तो मैं उसे फोन करता।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would appreciate it if you could help me.",
-        "hindi": "अगर आप मेरी मदद कर सकें तो मैं आभारी रहूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "They would travel every summer when they were kids.",
-        "hindi": "वे बचपन में हर गर्मियों में घूमने जाते थे।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would not have done that if I were you.",
-        "hindi": "अगर मैं तुम्हारी जगह होता तो ऐसा नहीं करता।",
-        "categories": "Would"
-    },
-    {
-        "english": "He would rather die than surrender.",
-        "hindi": "वह समर्पण करने से बेहतर मरना पसंद करेगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you be able to come tomorrow?",
-        "hindi": "क्या आप कल आ पाएँगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "If it were possible, I would help everyone.",
-        "hindi": "अगर संभव होता तो मैं सभी की मदद करता।",
-        "categories": "Would"
-    },
-    {
-        "english": "She said she would return soon.",
-        "hindi": "उसने कहा था कि वह जल्दी लौट आएगी।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would call you if I needed help.",
-        "hindi": "अगर मुझे मदद की जरूरत होगी तो मैं तुम्हें फोन करूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you mind if I opened the window?",
-        "hindi": "क्या आपको आपत्ति होगी अगर मैं खिड़की खोल दूँ?",
-        "categories": "Would"
-    },
-    {
-        "english": "I would be happy to assist you.",
-        "hindi": "मैं आपकी सहायता करके खुश होऊँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "If he asked me, I would go with him.",
-        "hindi": "अगर वह मुझसे कहता तो मैं उसके साथ चला जाता।",
-        "categories": "Would"
-    },
-    {
-        "english": "She would often sit here and read books.",
-        "hindi": "वह अक्सर यहाँ बैठकर किताबें पढ़ा करती थी।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you like to join us for dinner?",
-        "hindi": "क्या आप हमारे साथ रात के खाने में शामिल होना चाहेंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "I would suggest taking some rest.",
-        "hindi": "मैं सलाह दूँगा कि थोड़ा आराम कर लो।",
-        "categories": "Would"
-    },
-    {
-        "english": "They would have gone to the party if it hadn't rained.",
-        "hindi": "अगर बारिश नहीं होती तो वे पार्टी में जाते।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you be interested in this proposal?",
-        "hindi": "क्या आप इस प्रस्ताव में रुचि रखेंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "If I had known, I would have told you.",
-        "hindi": "अगर मुझे पता होता तो मैं तुम्हें बता देता।",
-        "categories": "Would"
-    },
-    {
-        "english": "He said he would meet us at the station.",
-        "hindi": "उसने कहा था कि वह हमें स्टेशन पर मिलेगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would never forgive him for this mistake.",
-        "hindi": "मैं उसे इस गलती के लिए कभी माफ नहीं करूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would it be possible to reschedule the meeting?",
-        "hindi": "क्या बैठक का समय बदलना संभव होगा?",
-        "categories": "Would"
-    },
-    {
-        "english": "I would have called you, but my phone was dead.",
-        "hindi": "मैं तुम्हें फोन करता, लेकिन मेरा फोन बंद था।",
-        "categories": "Would"
-    },
-    {
-        "english": "She would prefer tea over coffee.",
-        "hindi": "वह कॉफी के बजाय चाय पसंद करेगी।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you care to explain this?",
-        "hindi": "क्या आप यह समझाना चाहेंगे?",
-        "categories": "Would"
-    },
-    {
-        "english": "If I had wings, I would fly to you.",
-        "hindi": "अगर मेरे पास पंख होते तो मैं तुम्हारे पास उड़कर आता।",
-        "categories": "Would"
-    },
-    {
-        "english": "I would trust him with my life.",
-        "hindi": "मैं उस पर अपनी जान भी भरोसा कर सकता हूँ।",
-        "categories": "Would"
-    },
-    {
-        "english": "He would not agree to this under any circumstances.",
-        "hindi": "वह किसी भी हालत में इसके लिए राजी नहीं होगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "Would you believe if I told you the truth?",
-        "hindi": "क्या तुम यकीन करोगे अगर मैं तुम्हें सच बताऊँ?",
-        "categories": "Would"
-    },
-    {
-        "english": "I would scream if I saw a snake here.",
-        "hindi": "अगर मैंने यहाँ साँप देखा तो मैं चिल्ला उठूँगा।",
-        "categories": "Would"
-    },
-    {
-        "english": "She said she would wait for me outside.",
-        "hindi": "उसने कहा था कि वह मेरा बाहर इंतजार करेगी।",
-        "categories": "Would"
-    },
-    {
-        "english": "I could not understand what he said.",
-        "hindi": "मैं समझ नहीं सका कि उसने क्या कहा।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you please help me with this work?",
-        "hindi": "क्या आप कृपया इस काम में मेरी मदद कर सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "When I was young, I could run very fast.",
-        "hindi": "जब मैं छोटा था, तब बहुत तेज दौड़ सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "I wish I could stay here longer.",
-        "hindi": "काश मैं यहाँ और देर तक रह सकता।",
-        "categories": "could"
-    },
-    {
-        "english": "He could have finished it if he had tried.",
-        "hindi": "अगर उसने कोशिश की होती तो वह इसे खत्म कर सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you tell me where the station is?",
-        "hindi": "क्या आप मुझे बता सकते हैं कि स्टेशन कहाँ है?",
-        "categories": "could"
-    },
-    {
-        "english": "I could hear someone knocking at the door.",
-        "hindi": "मैंने सुना कि कोई दरवाजा खटखटा रहा था।",
-        "categories": "could"
-    },
-    {
-        "english": "She could come here anytime.",
-        "hindi": "वह कभी भी यहाँ आ सकती है।",
-        "categories": "could"
-    },
-    {
-        "english": "He said he could do it alone.",
-        "hindi": "उसने कहा कि वह यह अकेले कर सकता है।",
-        "categories": "could"
-    },
-    {
-        "english": "I could not believe my eyes.",
-        "hindi": "मुझे अपनी आँखों पर विश्वास नहीं हुआ।",
-        "categories": "could"
-    },
-    {
-        "english": "If you worked hard, you could achieve anything.",
-        "hindi": "अगर तुम मेहनत करो तो कुछ भी हासिल कर सकते हो।",
-        "categories": "could"
-    },
-    {
-        "english": "I wish I could help you in this matter.",
-        "hindi": "काश मैं इस मामले में तुम्हारी मदद कर पाता।",
-        "categories": "could"
-    },
-    {
-        "english": "She could have told me the truth.",
-        "hindi": "वह मुझे सच बता सकती थी।",
-        "categories": "could"
-    },
-    {
-        "english": "Could we meet tomorrow to discuss this?",
-        "hindi": "क्या हम इस पर चर्चा करने के लिए कल मिल सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could sense that something was wrong.",
-        "hindi": "मैं महसूस कर सकता था कि कुछ गड़बड़ है।",
-        "categories": "could"
-    },
-    {
-        "english": "He could barely stand after the accident.",
-        "hindi": "दुर्घटना के बाद वह मुश्किल से खड़ा हो पा रहा था।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you wait here for a moment?",
-        "hindi": "क्या आप यहाँ एक मिनट इंतजार कर सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could tell he was lying.",
-        "hindi": "मैं समझ सकता था कि वह झूठ बोल रहा था।",
-        "categories": "could"
-    },
-    {
-        "english": "She could swim when she was just five.",
-        "hindi": "वह सिर्फ पाँच साल की थी जब तैर सकती थी।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you pass me the pen?",
-        "hindi": "क्या आप मुझे पेन दे सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could never forget what you did for me.",
-        "hindi": "मैं कभी नहीं भूल सकता कि तुमने मेरे लिए क्या किया।",
-        "categories": "could"
-    },
-    {
-        "english": "He could not control his anger.",
-        "hindi": "वह अपना गुस्सा नियंत्रित नहीं कर सका।",
-        "categories": "could"
-    },
-    {
-        "english": "If I had time, I could come with you.",
-        "hindi": "अगर मेरे पास समय होता तो मैं तुम्हारे साथ आ सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "I could feel the cold wind on my face.",
-        "hindi": "मैंने अपने चेहरे पर ठंडी हवा महसूस की।",
-        "categories": "could"
-    },
-    {
-        "english": "Could it be possible to finish this today?",
-        "hindi": "क्या यह आज खत्म करना संभव होगा?",
-        "categories": "could"
-    },
-    {
-        "english": "She could not sleep the whole night.",
-        "hindi": "वह पूरी रात सो नहीं सकी।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you explain this to me again?",
-        "hindi": "क्या आप मुझे यह फिर से समझा सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "He could have won the match if he had practiced.",
-        "hindi": "अगर उसने अभ्यास किया होता तो वह मैच जीत सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "I could see the mountains from my window.",
-        "hindi": "मैं अपनी खिड़की से पहाड़ देख सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you lower your voice, please?",
-        "hindi": "क्या आप अपनी आवाज थोड़ी धीमी कर सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "He could have been a great singer.",
-        "hindi": "वह एक महान गायक बन सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "She could hardly believe her luck.",
-        "hindi": "वह अपनी किस्मत पर मुश्किल से विश्वास कर पा रही थी।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you come here for a moment?",
-        "hindi": "क्या आप एक मिनट के लिए यहाँ आ सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could not find my keys anywhere.",
-        "hindi": "मुझे अपनी चाबियाँ कहीं नहीं मिलीं।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you tell me the time, please?",
-        "hindi": "क्या आप मुझे समय बता सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could have done better in the exam.",
-        "hindi": "मैं परीक्षा में और अच्छा कर सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "He could stay here if he wanted to.",
-        "hindi": "अगर वह चाहता तो यहाँ रह सकता था।",
-        "categories": "could"
-    },
-    {
-        "english": "Could it be true what he said?",
-        "hindi": "क्या यह सच हो सकता है जो उसने कहा?",
-        "categories": "could"
-    },
-    {
-        "english": "I could never say no to you.",
-        "hindi": "मैं तुम्हें कभी मना नहीं कर सकता।",
-        "categories": "could"
-    },
-    {
-        "english": "She could barely speak after the shock.",
-        "hindi": "झटका लगने के बाद वह मुश्किल से बोल पा रही थी।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you please repeat that?",
-        "hindi": "क्या आप कृपया वह दोहरा सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could feel that he was nervous.",
-        "hindi": "मैं महसूस कर सकता था कि वह घबराया हुआ था।",
-        "categories": "could"
-    },
-    {
-        "english": "He could not solve the problem.",
-        "hindi": "वह समस्या हल नहीं कर सका।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you write it down for me?",
-        "hindi": "क्या आप इसे मेरे लिए लिख सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could hardly hear what he was saying.",
-        "hindi": "मैं मुश्किल से सुन पा रहा था कि वह क्या कह रहा था।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you open the window, please?",
-        "hindi": "क्या आप खिड़की खोल सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "He could not remember anything.",
-        "hindi": "वह कुछ भी याद नहीं कर सका।",
-        "categories": "could"
-    },
-    {
-        "english": "Could you tell me your name?",
-        "hindi": "क्या आप मुझे अपना नाम बता सकते हैं?",
-        "categories": "could"
-    },
-    {
-        "english": "I could never do that to you.",
-        "hindi": "मैं तुम्हारे साथ ऐसा कभी नहीं कर सकता।",
-        "categories": "could"
-    },
-    {
-        "english": "She could have helped us if she had wanted.",
-        "hindi": "अगर वह चाहती तो हमारी मदद कर सकती थी।",
-        "categories": "could"
-    },
-    {
-        "english": "You should not take everything so seriously.",
-        "hindi": "तुम्हें हर बात इतनी गंभीरता से नहीं लेनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "He should have informed us about his decision.",
-        "hindi": "उसे अपने निर्णय के बारे में हमें बता देना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "I think you should apologise to her.",
-        "hindi": "मुझे लगता है कि तुम्हें उससे माफी माँगनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "We should leave before it gets dark.",
-        "hindi": "हमें अंधेरा होने से पहले निकल जाना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "She should be here by now.",
-        "hindi": "उसे अब तक यहाँ होना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "You should not have spoken to him like that.",
-        "hindi": "तुम्हें उससे ऐसे बात नहीं करनी चाहिए थी।",
-        "categories": "should"
-    },
-    {
-        "english": "Should I wait for you here?",
-        "hindi": "क्या मुझे यहाँ तुम्हारा इंतजार करना चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "He should have listened to his parents.",
-        "hindi": "उसे अपने माता-पिता की बात सुननी चाहिए थी।",
-        "categories": "should"
-    },
-    {
-        "english": "What should I do if this happens again?",
-        "hindi": "अगर ऐसा फिर हो तो मुझे क्या करना चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "You should try to control your anger.",
-        "hindi": "तुम्हें अपने गुस्से पर काबू रखने की कोशिश करनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "I should have called you earlier.",
-        "hindi": "मुझे तुम्हें पहले फोन कर लेना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "Should we tell him the truth?",
-        "hindi": "क्या हमें उसे सच बता देना चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "She should take care of her health.",
-        "hindi": "उसे अपनी सेहत का ध्यान रखना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "You should not have wasted so much time.",
-        "hindi": "तुम्हें इतना समय बर्बाद नहीं करना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "He should be more careful next time.",
-        "hindi": "उसे अगली बार और सावधान रहना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "Students should respect their teachers.",
-        "hindi": "छात्रों को अपने शिक्षकों का सम्मान करना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "I should have known this would happen.",
-        "hindi": "मुझे पता होना चाहिए था कि ऐसा होगा।",
-        "categories": "should"
-    },
-    {
-        "english": "You should consult a doctor immediately.",
-        "hindi": "तुम्हें तुरंत डॉक्टर से सलाह लेनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "Should we go to the meeting together?",
-        "hindi": "क्या हमें बैठक में साथ जाना चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "He should not ignore his responsibilities.",
-        "hindi": "उसे अपनी जिम्मेदारियों की अनदेखी नहीं करनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "People should learn to be more patient.",
-        "hindi": "लोगों को अधिक धैर्यवान होना सीखना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "I think we should wait for her reply.",
-        "hindi": "मुझे लगता है हमें उसके जवाब का इंतजार करना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "You should not have eaten so much.",
-        "hindi": "तुम्हें इतना ज्यादा नहीं खाना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "He should apologise for his rude behaviour.",
-        "hindi": "उसे अपने बुरे व्यवहार के लिए माफी माँगनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "Should I bring anything for you?",
-        "hindi": "क्या मुझे तुम्हारे लिए कुछ लाना चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "You should read this book, it's wonderful.",
-        "hindi": "तुम्हें यह किताब पढ़नी चाहिए, यह शानदार है।",
-        "categories": "should"
-    },
-    {
-        "english": "He should have been more careful with his words.",
-        "hindi": "उसे अपने शब्दों के प्रति अधिक सावधान रहना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "Should we inform the police about this?",
-        "hindi": "क्या हमें इसकी सूचना पुलिस को देनी चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "You should keep your promises.",
-        "hindi": "तुम्हें अपने वादे निभाने चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "She should work on improving her skills.",
-        "hindi": "उसे अपनी क्षमताओं को सुधारने पर काम करना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "I should have trusted you.",
-        "hindi": "मुझे तुम पर भरोसा करना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "You should speak politely to everyone.",
-        "hindi": "तुम्हें सब से विनम्रता से बात करनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "Should I call him now or later?",
-        "hindi": "क्या मुझे उसे अभी फोन करना चाहिए या बाद में?",
-        "categories": "should"
-    },
-    {
-        "english": "He should not waste this opportunity.",
-        "hindi": "उसे यह अवसर बर्बाद नहीं करना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "We should try to solve this problem together.",
-        "hindi": "हमें इस समस्या को मिलकर सुलझाने की कोशिश करनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "You should not depend on others for everything.",
-        "hindi": "तुम्हें हर बात के लिए दूसरों पर निर्भर नहीं रहना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "He should arrive here by evening.",
-        "hindi": "उसे शाम तक यहाँ पहुँच जाना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "I think you should think about it again.",
-        "hindi": "मुझे लगता है तुम्हें इस पर दोबारा सोचना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "Should we invite them to the party?",
-        "hindi": "क्या हमें उन्हें पार्टी में बुलाना चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "She should have told me the truth.",
-        "hindi": "उसे मुझे सच बता देना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "You should not interfere in their matters.",
-        "hindi": "तुम्हें उनके मामलों में दखल नहीं देना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "He should spend more time with his family.",
-        "hindi": "उसे अपने परिवार के साथ अधिक समय बिताना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "We should not judge others so easily.",
-        "hindi": "हमें दूसरों को इतनी जल्दी नहीं आंकना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "Should I send this mail today?",
-        "hindi": "क्या मुझे यह मेल आज भेजनी चाहिए?",
-        "categories": "should"
-    },
-    {
-        "english": "You should never give up on your dreams.",
-        "hindi": "तुम्हें अपने सपनों को कभी नहीं छोड़ना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "He should have been more honest with her.",
-        "hindi": "उसे उसके साथ अधिक ईमानदार होना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "She should prepare well for the interview.",
-        "hindi": "उसे साक्षात्कार के लिए अच्छी तैयारी करनी चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "Should we wait for them or leave now?",
-        "hindi": "क्या हमें उनका इंतजार करना चाहिए या अब निकल जाएँ?",
-        "categories": "should"
-    },
-    {
-        "english": "You should always be kind to others.",
-        "hindi": "तुम्हें हमेशा दूसरों के प्रति दयालु होना चाहिए।",
-        "categories": "should"
-    },
-    {
-        "english": "I should not have trusted him so easily.",
-        "hindi": "मुझे उस पर इतनी जल्दी भरोसा नहीं करना चाहिए था।",
-        "categories": "should"
-    },
-    {
-        "english": "It may rain later in the evening.",
-        "hindi": "शाम को बाद में बारिश हो सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "She may come to visit us tomorrow.",
-        "hindi": "वह कल हमसे मिलने आ सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "He may not be aware of this issue.",
-        "hindi": "हो सकता है उसे इस समस्या के बारे में पता न हो।",
-        "categories": "may"
-    },
-    {
-        "english": "You may leave once your work is done.",
-        "hindi": "तुम अपना काम खत्म होने पर जा सकते हो।",
-        "categories": "may"
-    },
-    {
-        "english": "They may reach here by nightfall.",
-        "hindi": "वे रात होने तक यहाँ पहुँच सकते हैं।",
-        "categories": "may"
-    },
-    {
-        "english": "This medicine may have side effects.",
-        "hindi": "इस दवाई के कुछ दुष्प्रभाव हो सकते हैं।",
-        "categories": "may"
-    },
-    {
-        "english": "She may feel better after some rest.",
-        "hindi": "थोड़ा आराम करने के बाद वह बेहतर महसूस कर सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "I may go to Delhi next week for work.",
-        "hindi": "मैं अगले हफ्ते काम के लिए दिल्ली जा सकता हूँ।",
-        "categories": "may"
-    },
-    {
-        "english": "We may face some difficulties during the journey.",
-        "hindi": "यात्रा के दौरान हमें कुछ कठिनाइयों का सामना करना पड़ सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "He may be at the library now.",
-        "hindi": "वह अभी पुस्तकालय में हो सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "She may not agree with your opinion.",
-        "hindi": "वह तुम्हारी राय से सहमत न हो सकती।",
-        "categories": "may"
-    },
-    {
-        "english": "This plan may work better than the previous one.",
-        "hindi": "यह योजना पिछली योजना से बेहतर काम कर सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "You may find this book useful.",
-        "hindi": "तुम्हें यह किताब उपयोगी लग सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "He may have left early in the morning.",
-        "hindi": "वह सुबह जल्दी निकल गया होगा।",
-        "categories": "may"
-    },
-    {
-        "english": "I may visit my grandparents this weekend.",
-        "hindi": "मैं इस सप्ताहांत अपने दादा-दादी से मिलने जा सकता हूँ।",
-        "categories": "may"
-    },
-    {
-        "english": "They may not come if it rains.",
-        "hindi": "अगर बारिश हुई तो वे शायद न आएँ।",
-        "categories": "may"
-    },
-    {
-        "english": "She may need your help in this task.",
-        "hindi": "इस काम में उसे तुम्हारी मदद की जरूरत हो सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "You may face some unexpected challenges.",
-        "hindi": "तुम्हें कुछ अप्रत्याशित चुनौतियों का सामना करना पड़ सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "He may be waiting for your call.",
-        "hindi": "वह तुम्हारे कॉल का इंतजार कर रहा होगा।",
-        "categories": "may"
-    },
-    {
-        "english": "The train may get delayed due to fog.",
-        "hindi": "कोहरे के कारण ट्रेन देर हो सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "She may not be feeling well today.",
-        "hindi": "वह आज ठीक महसूस नहीं कर रही होगी।",
-        "categories": "may"
-    },
-    {
-        "english": "You may have to submit the form again.",
-        "hindi": "तुम्हें फॉर्म दोबारा जमा करना पड़ सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "He may join us for dinner tonight.",
-        "hindi": "वह आज रात हमारे साथ खाना खा सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "It may take a long time to finish this project.",
-        "hindi": "इस परियोजना को खत्म होने में काफी समय लग सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "She may already know about this news.",
-        "hindi": "वह पहले से इस खबर के बारे में जानती हो सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "You may be surprised to hear this.",
-        "hindi": "यह सुनकर तुम हैरान हो सकते हो।",
-        "categories": "may"
-    },
-    {
-        "english": "They may announce the results tomorrow.",
-        "hindi": "वे परिणाम कल घोषित कर सकते हैं।",
-        "categories": "may"
-    },
-    {
-        "english": "He may have forgotten to lock the door.",
-        "hindi": "हो सकता है उसने दरवाजा बंद करना भूल गया हो।",
-        "categories": "may"
-    },
-    {
-        "english": "She may go abroad for higher studies.",
-        "hindi": "वह उच्च अध्ययन के लिए विदेश जा सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "I may buy a new phone next month.",
-        "hindi": "मैं अगले महीने नया फोन खरीद सकता हूँ।",
-        "categories": "may"
-    },
-    {
-        "english": "You may not get another chance like this.",
-        "hindi": "तुम्हें ऐसा मौका दोबारा नहीं मिल सकता।",
-        "categories": "may"
-    },
-    {
-        "english": "He may not come to the meeting today.",
-        "hindi": "वह आज बैठक में न आ सके।",
-        "categories": "may"
-    },
-    {
-        "english": "It may be too late to change your decision.",
-        "hindi": "अपना निर्णय बदलने में अब देर हो सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "She may reach there before us.",
-        "hindi": "वह हमसे पहले वहाँ पहुँच सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "You may need to work overtime today.",
-        "hindi": "आज तुम्हें ओवरटाइम करना पड़ सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "They may cancel the event due to rain.",
-        "hindi": "बारिश के कारण वे कार्यक्रम रद्द कर सकते हैं।",
-        "categories": "may"
-    },
-    {
-        "english": "He may have lost his wallet somewhere.",
-        "hindi": "उसका बटुआ कहीं गिर गया होगा।",
-        "categories": "may"
-    },
-    {
-        "english": "She may be waiting outside for you.",
-        "hindi": "वह तुम्हारा बाहर इंतजार कर रही हो सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "I may not be able to attend the function.",
-        "hindi": "मैं कार्यक्रम में शामिल नहीं हो पाऊँगा।",
-        "categories": "may"
-    },
-    {
-        "english": "You may have to take a different route.",
-        "hindi": "तुम्हें अलग रास्ता लेना पड़ सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "He may be busy with his work now.",
-        "hindi": "वह अभी अपने काम में व्यस्त हो सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "She may call you later in the day.",
-        "hindi": "वह दिन में बाद में तुम्हें कॉल कर सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "I may go for a walk in the evening.",
-        "hindi": "मैं शाम को टहलने जा सकता हूँ।",
-        "categories": "may"
-    },
-    {
-        "english": "They may not allow us to enter without ID.",
-        "hindi": "बिना पहचान पत्र के वे हमें प्रवेश नहीं देने सकते।",
-        "categories": "may"
-    },
-    {
-        "english": "He may come to office late today.",
-        "hindi": "वह आज ऑफिस देर से आ सकता है।",
-        "categories": "may"
-    },
-    {
-        "english": "She may forget about the meeting.",
-        "hindi": "वह बैठक के बारे में भूल सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "You may like this place once you visit.",
-        "hindi": "एक बार यहाँ आओगे तो तुम्हें यह जगह पसंद आ सकती है।",
-        "categories": "may"
-    },
-    {
-        "english": "They may postpone the match due to rain.",
-        "hindi": "बारिश के कारण वे मैच स्थगित कर सकते हैं।",
-        "categories": "may"
-    },
-    {
-        "english": "He may call you if he needs help.",
-        "hindi": "अगर उसे मदद चाहिए होगी तो वह तुम्हें कॉल कर सकता है।",
-        "categories": "may"
-    }
+  {
+    "hindi": "मैंने कल देर से उठकर दिन शुरू किया, मैं रोज जल्दी उठता हूँ, मैं कल समय पर उठूँगा।",
+    "english": "I started my day late yesterday, I wake up early daily, I will wake up on time tomorrow.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने उसे सच्चाई बताई, मैं हमेशा सच बोलता हूँ, मैं आगे भी सच बोलूँगा।",
+    "english": "I told him the truth, I always speak the truth, I will continue to speak the truth.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने अपनी गलती स्वीकार की, मैं अपनी जिम्मेदारी लेता हूँ, मैं आगे से सावधान रहूँगा।",
+    "english": "I accepted my mistake, I take responsibility for my actions, I will be more careful from now on.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने अपना समय बर्बाद किया, मैं अब समय की कदर करता हूँ, मैं आगे से समय का सही उपयोग करूँगा।",
+    "english": "I wasted my time, I now value my time, I will use my time wisely in the future.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने नई आदत शुरू की, मैं रोज अभ्यास करता हूँ, मैं इसे जारी रखूँगा।",
+    "english": "I started a new habit, I practice daily, I will continue it.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने उससे माफी मांगी, मैं अपनी गलतियों को मानता हूँ, मैं फिर से वही गलती नहीं करूँगा।",
+    "english": "I apologized to him, I admit my mistakes, I will not repeat the same mistake.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने परिवार के साथ समय बिताया, मैं उनके साथ समय बिताता हूँ, मैं आगे भी उनके साथ समय बिताऊँगा।",
+    "english": "I spent time with my family, I spend time with them, I will continue to spend time with them.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने अपनी सेहत पर ध्यान नहीं दिया, मैं अब अपनी सेहत का ध्यान रखता हूँ, मैं आगे से नियमित व्यायाम करूँगा।",
+    "english": "I did not take care of my health, I now take care of my health, I will exercise regularly from now on.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने एक कठिन निर्णय लिया, मैं सोच-समझकर निर्णय लेता हूँ, मैं भविष्य में बेहतर निर्णय लूँगा।",
+    "english": "I made a difficult decision, I make decisions carefully, I will make better decisions in the future.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने नई जगह घूमने गया, मैं नई जगहों को एक्सप्लोर करता हूँ, मैं जल्द ही एक और यात्रा करूँगा।",
+    "english": "I visited a new place, I explore new places, I will plan another trip soon.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने उससे खुलकर बात की, मैं खुलकर बात करता हूँ, मैं आगे भी ईमानदारी से बात करूँगा।",
+    "english": "I spoke to him openly, I speak openly, I will continue to speak honestly.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने नई किताब पढ़ी, मैं रोज पढ़ता हूँ, मैं अगली किताब भी जल्द शुरू करूँगा।",
+    "english": "I read a new book, I read daily, I will start the next book soon.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने खुद को शांत रखा, मैं मुश्किल समय में शांत रहता हूँ, मैं आगे भी धैर्य बनाए रखूँगा।",
+    "english": "I kept myself calm, I stay calm in difficult situations, I will remain patient in the future.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने अपने लक्ष्य के लिए मेहनत की, मैं अपने लक्ष्य के लिए मेहनत करता हूँ, मैं अपने सपने को हासिल करूँगा।",
+    "english": "I worked hard for my goal, I work hard for my goals, I will achieve my dream.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने खुद पर विश्वास किया, मैं खुद पर विश्वास करता हूँ, मैं आगे भी आत्मविश्वास बनाए रखूँगा।",
+    "english": "I believed in myself, I believe in myself, I will continue to stay confident.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने क्लाइंट की समस्या हल की, मैं क्लाइंट की समस्या हल करता हूँ, मैं क्लाइंट की समस्या हल करूँगा।",
+    "english": "I resolved the client's issue, I resolve the client's issue, I will resolve the client's issue.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने टीम के प्रदर्शन का विश्लेषण किया, मैं टीम के प्रदर्शन का विश्लेषण करता हूँ, मैं टीम के प्रदर्शन का विश्लेषण करूँगा।",
+    "english": "I analyzed the team performance, I analyze the team performance, I will analyze the team performance.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने प्रोजेक्ट की प्रगति की समीक्षा की, मैं प्रोजेक्ट की प्रगति की समीक्षा करता हूँ, मैं प्रोजेक्ट की प्रगति की समीक्षा करूँगा।",
+    "english": "I reviewed the project progress, I review the project progress, I will review the project progress.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने जोखिम का आकलन किया, मैं जोखिम का आकलन करता हूँ, मैं जोखिम का आकलन करूँगा।",
+    "english": "I assessed the risk, I assess the risk, I will assess the risk.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने कार्य प्रक्रिया को अनुकूलित किया, मैं कार्य प्रक्रिया को अनुकूलित करता हूँ, मैं कार्य प्रक्रिया को अनुकूलित करूँगा।",
+    "english": "I optimized the workflow, I optimize the workflow, I will optimize the workflow.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने टीम को तकनीकी मार्गदर्शन दिया, मैं टीम को तकनीकी मार्गदर्शन देता हूँ, मैं टीम को तकनीकी मार्गदर्शन दूँगा।",
+    "english": "I provided technical guidance to the team, I provide technical guidance to the team, I will provide technical guidance to the team.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने नई रणनीति प्रस्तावित की, मैं नई रणनीति प्रस्तावित करता हूँ, मैं नई रणनीति प्रस्तावित करूँगा।",
+    "english": "I proposed a new strategy, I propose a new strategy, I will propose a new strategy.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने बजट का प्रबंधन किया, मैं बजट का प्रबंधन करता हूँ, मैं बजट का प्रबंधन करूँगा।",
+    "english": "I managed the budget, I manage the budget, I will manage the budget.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने ग्राहक संतुष्टि सुनिश्चित की, मैं ग्राहक संतुष्टि सुनिश्चित करता हूँ, मैं ग्राहक संतुष्टि सुनिश्चित करूँगा।",
+    "english": "I ensured customer satisfaction, I ensure customer satisfaction, I will ensure customer satisfaction.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने रिपोर्ट का विस्तृत विश्लेषण किया, मैं रिपोर्ट का विस्तृत विश्लेषण करता हूँ, मैं रिपोर्ट का विस्तृत विश्लेषण करूँगा।",
+    "english": "I conducted a detailed analysis of the report, I conduct a detailed analysis of the report, I will conduct a detailed analysis of the report.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने टीम के साथ लक्ष्य निर्धारित किए, मैं टीम के साथ लक्ष्य निर्धारित करता हूँ, मैं टीम के साथ लक्ष्य निर्धारित करूँगा।",
+    "english": "I set goals with the team, I set goals with the team, I will set goals with the team.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने प्रक्रिया में सुधार के सुझाव दिए, मैं प्रक्रिया में सुधार के सुझाव देता हूँ, मैं प्रक्रिया में सुधार के सुझाव दूँगा।",
+    "english": "I suggested improvements in the process, I suggest improvements in the process, I will suggest improvements in the process.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने परियोजना की समय-सीमा तय की, मैं परियोजना की समय-सीमा तय करता हूँ, मैं परियोजना की समय-सीमा तय करूँगा।",
+    "english": "I defined the project timeline, I define the project timeline, I will define the project timeline.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने डेटा के आधार पर निर्णय लिया, मैं डेटा के आधार पर निर्णय लेता हूँ, मैं डेटा के आधार पर निर्णय लूँगा।",
+    "english": "I made a decision based on data, I make decisions based on data, I will make decisions based on data.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने टीम के साथ समन्वय स्थापित किया, मैं टीम के साथ समन्वय स्थापित करता हूँ, मैं टीम के साथ समन्वय स्थापित करूँगा।",
+    "english": "I established coordination with the team, I establish coordination with the team, I will establish coordination with the team.",
+    "categories": "Past, Present, Future - Medium"
+  },
+  {
+    "hindi": "मैंने रिपोर्ट पूरी की, मैं रिपोर्ट पूरी करता हूँ, मैं रिपोर्ट पूरी करूँगा।",
+    "english": "I completed the report, I complete the report, I will complete the report.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने ईमेल भेजा, मैं ईमेल भेजता हूँ, मैं ईमेल भेजूँगा।",
+    "english": "I sent the email, I send the email, I will send the email.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने मीटिंग अटेंड की, मैं मीटिंग अटेंड करता हूँ, मैं मीटिंग अटेंड करूँगा।",
+    "english": "I attended the meeting, I attend the meeting, I will attend the meeting.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने क्लाइंट से बात की, मैं क्लाइंट से बात करता हूँ, मैं क्लाइंट से बात करूँगा।",
+    "english": "I spoke to the client, I speak to the client, I will speak to the client.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने प्रेजेंटेशन तैयार किया, मैं प्रेजेंटेशन तैयार करता हूँ, मैं प्रेजेंटेशन तैयार करूँगा।",
+    "english": "I prepared the presentation, I prepare the presentation, I will prepare the presentation.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने समस्या हल की, मैं समस्या हल करता हूँ, मैं समस्या हल करूँगा।",
+    "english": "I solved the problem, I solve the problem, I will solve the problem.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने लक्ष्य हासिल किया, मैं लक्ष्य हासिल करता हूँ, मैं लक्ष्य हासिल करूँगा।",
+    "english": "I achieved the target, I achieve the target, I will achieve the target.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने डेटा का विश्लेषण किया, मैं डेटा का विश्लेषण करता हूँ, मैं डेटा का विश्लेषण करूँगा।",
+    "english": "I analyzed the data, I analyze the data, I will analyze the data.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने रिपोर्ट जमा की, मैं रिपोर्ट जमा करता हूँ, मैं रिपोर्ट जमा करूँगा।",
+    "english": "I submitted the report, I submit the report, I will submit the report.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने अपडेट दिया, मैं अपडेट देता हूँ, मैं अपडेट दूँगा।",
+    "english": "I gave the update, I give the update, I will give the update.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने टीम की मदद की, मैं टीम की मदद करता हूँ, मैं टीम की मदद करूँगा।",
+    "english": "I helped the team, I help the team, I will help the team.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने नई योजना बनाई, मैं नई योजना बनाता हूँ, मैं नई योजना बनाऊँगा।",
+    "english": "I made a new plan, I make a new plan, I will make a new plan.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने कार्य पूरा किया, मैं कार्य पूरा करता हूँ, मैं कार्य पूरा करूँगा।",
+    "english": "I finished the task, I finish the task, I will finish the task.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने टीम से समन्वय किया, मैं टीम से समन्वय करता हूँ, मैं टीम से समन्वय करूँगा।",
+    "english": "I coordinated with the team, I coordinate with the team, I will coordinate with the team.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने प्रस्तुति दी, मैं प्रस्तुति देता हूँ, मैं प्रस्तुति दूँगा।",
+    "english": "I delivered the presentation, I deliver the presentation, I will deliver the presentation.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने सुझाव दिया, मैं सुझाव देता हूँ, मैं सुझाव दूँगा।",
+    "english": "I gave a suggestion, I give a suggestion, I will give a suggestion.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने बदलाव लागू किए, मैं बदलाव लागू करता हूँ, मैं बदलाव लागू करूँगा।",
+    "english": "I implemented the changes, I implement the changes, I will implement the changes.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने समय सीमा पूरी की, मैं समय सीमा पूरी करता हूँ, मैं समय सीमा पूरी करूँगा।",
+    "english": "I met the deadline, I meet the deadline, I will meet the deadline.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने नई जिम्मेदारी संभाली, मैं नई जिम्मेदारी संभालता हूँ, मैं नई जिम्मेदारी संभालूँगा।",
+    "english": "I handled a new responsibility, I handle a new responsibility, I will handle a new responsibility.",
+    "categories": "Past, Present, Future"
+  },
+  {
+    "hindi": "मैंने प्रक्रिया में सुधार किया, मैं प्रक्रिया में सुधार करता हूँ, मैं प्रक्रिया में सुधार करूँगा।",
+    "english": "I improved the process, I improve the process, I will improve the process.",
+    "categories": "Past, Present, Future"
+  }
 ]
